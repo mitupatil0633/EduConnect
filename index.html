@@ -1,0 +1,769 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Smart Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #fdf2f8, #ecfeff);
+            color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.25);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 25px;
+        }
+
+            .navbar nav a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+                .navbar nav a:hover {
+                    color: #fde68a;
+                    transform: translateY(-2px);
+                }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background: radial-gradient(circle at 10% 20%, #c4b5fd 0%, transparent 30%), radial-gradient(circle at 90% 80%, #f9a8d4 0%, transparent 30%), linear-gradient(135deg, #eef2ff, #fdf2f8, #ecfeff);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: "📚";
+                position: absolute;
+                left: 8%;
+                top: 18%;
+                font-size: 55px;
+                opacity: 0.18;
+                transform: rotate(-15deg);
+            }
+
+            .hero::after {
+                content: "⭐";
+                position: absolute;
+                right: 9%;
+                bottom: 18%;
+                font-size: 55px;
+                opacity: 0.2;
+                transform: rotate(15deg);
+            }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome {
+            color: #7c3aed;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 62px;
+            margin: 15px 0;
+            color: #1e1b4b;
+            line-height: 1.1;
+        }
+
+            .hero h1 span {
+                background: linear-gradient(90deg, #4f46e5, #ec4899);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+        .hero-text {
+            font-size: 20px;
+            line-height: 1.7;
+            color: #475569;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+            .buttons button {
+                border: none;
+                padding: 15px 30px;
+                border-radius: 14px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                background: linear-gradient(135deg, #4f46e5, #7c3aed);
+                color: white;
+                box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+                transition: 0.3s;
+            }
+
+                .buttons button:hover {
+                    transform: translateY(-4px) scale(1.02);
+                    box-shadow: 0 12px 25px rgba(79, 70, 229, 0.4);
+                }
+
+            .buttons .outline-button {
+                background: white;
+                color: #7c3aed;
+                border: 2px solid #7c3aed;
+                box-shadow: none;
+            }
+
+                .buttons .outline-button:hover {
+                    background: #f5f3ff;
+                }
+
+
+        /* =========================
+           STANDARDS
+        ========================= */
+
+        .standards,
+        .features {
+            padding: 75px 7%;
+            text-align: center;
+        }
+
+        .standards {
+            background: white;
+        }
+
+        .features {
+            background: linear-gradient(135deg, #f5f3ff, #fdf2f8);
+        }
+
+            .standards h2,
+            .features h2 {
+                font-size: 35px;
+                margin-bottom: 10px;
+                color: #312e81;
+            }
+
+        .standards > p {
+            color: #64748b;
+            margin-bottom: 45px;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           STANDARD CARDS
+        ========================= */
+
+        .standard-container,
+        .feature-container {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .standard-card,
+        .feature-card {
+            background: white;
+            padding: 30px 18px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+            transition: 0.3s;
+            border-top: 5px solid #7c3aed;
+        }
+
+            .standard-card:nth-child(1) {
+                border-top-color: #7c3aed;
+            }
+
+            .standard-card:nth-child(2) {
+                border-top-color: #ec4899;
+            }
+
+            .standard-card:nth-child(3) {
+                border-top-color: #06b6d4;
+            }
+
+            .standard-card:nth-child(4) {
+                border-top-color: #f59e0b;
+            }
+
+            .standard-card:nth-child(5) {
+                border-top-color: #22c55e;
+            }
+
+            .standard-card:hover,
+            .feature-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 30px rgba(79, 70, 229, 0.16);
+            }
+
+        .icon,
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 14px;
+        }
+
+        .standard-card h3,
+        .feature-card h3 {
+            color: #312e81;
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .standard-card p,
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .feature-container {
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            border-top-color: #4f46e5;
+        }
+
+            .feature-card:nth-child(2) {
+                border-top-color: #ec4899;
+            }
+
+            .feature-card:nth-child(3) {
+                border-top-color: #06b6d4;
+            }
+
+            .feature-card:nth-child(4) {
+                border-top-color: #22c55e;
+            }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 45px 20px;
+            color: white;
+            background: linear-gradient(90deg, #312e81, #7c3aed, #be185d);
+        }
+
+            footer h3 {
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
+
+            footer p {
+                margin: 7px;
+                color: #e0e7ff;
+            }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .standard-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .feature-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 18px 20px;
+            }
+
+                .navbar nav {
+                    gap: 15px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 50px 18px;
+            }
+
+                .hero h1 {
+                    font-size: 38px;
+                }
+
+            .hero-text {
+                font-size: 17px;
+            }
+
+            .welcome {
+                font-size: 13px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+                .buttons button {
+                    width: 90%;
+                    max-width: 300px;
+                }
+
+            .standards,
+            .features {
+                padding: 55px 20px;
+            }
+
+                .standards h2,
+                .features h2 {
+                    font-size: 29px;
+                }
+
+            .standard-container,
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero::before,
+            .hero::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <!-- PROTECTED SUBJECTS LINK -->
+            <a href="#" onclick="openSubjects(); return false;">
+                Subjects
+            </a>
+
+            <a href="#features">
+                About
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="welcome">
+                ✨ WELCOME TO EDUCONNECT ✨
+            </p>
+
+            <h1>
+                Learn. <span>Explore.</span> Grow.
+            </h1>
+
+            <p class="hero-text">
+                A fun, colourful and interactive learning platform
+                designed for Standard 1 to Standard 5 students.
+            </p>
+
+            <div class="buttons">
+
+                <button onclick="startLearning()">
+                    🚀 Start Learning
+                </button>
+
+                <!-- PROTECTED SUBJECTS BUTTON -->
+                <button class="outline-button"
+                        onclick="openSubjects()">
+
+                    📚 Explore Subjects
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STANDARDS
+    ========================= -->
+
+    <section class="standards">
+
+        <h2>
+            🎓 Choose Your Standard
+        </h2>
+
+        <p>
+            Learning designed for every student.
+        </p>
+
+        <div class="standard-container">
+
+
+            <div class="standard-card">
+
+                <div class="icon">
+                    🌟
+                </div>
+
+                <h3>
+                    Standard 1
+                </h3>
+
+                <p>
+                    Start your learning journey.
+                </p>
+
+            </div>
+
+
+            <div class="standard-card">
+
+                <div class="icon">
+                    📚
+                </div>
+
+                <h3>
+                    Standard 2
+                </h3>
+
+                <p>
+                    Learn new and exciting things.
+                </p>
+
+            </div>
+
+
+            <div class="standard-card">
+
+                <div class="icon">
+                    🔍
+                </div>
+
+                <h3>
+                    Standard 3
+                </h3>
+
+                <p>
+                    Explore and discover.
+                </p>
+
+            </div>
+
+
+            <div class="standard-card">
+
+                <div class="icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Standard 4
+                </h3>
+
+                <p>
+                    Build your knowledge.
+                </p>
+
+            </div>
+
+
+            <div class="standard-card">
+
+                <div class="icon">
+                    🏆
+                </div>
+
+                <h3>
+                    Standard 5
+                </h3>
+
+                <p>
+                    Get ready for new challenges.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="features" id="features">
+
+        <h2>
+            🌈 Everything Students Need
+        </h2>
+
+        <div class="feature-container">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Subjects
+                </h3>
+
+                <p>
+                    Learn your school subjects
+                    in an organized way.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Homework
+                </h3>
+
+                <p>
+                    View and complete daily homework.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎮
+                </div>
+
+                <h3>
+                    Activities
+                </h3>
+
+                <p>
+                    Learn through fun activities
+                    and challenges.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Progress
+                </h3>
+
+                <p>
+                    Track your learning progress.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+
+    <!-- =========================
+         LOGIN PROTECTION
+    ========================= -->
+
+    <script>
+
+        function openSubjects() {
+
+            const studentName =
+                localStorage.getItem("studentName");
+
+            const studentStandard =
+                localStorage.getItem("studentStandard");
+
+
+            if (studentName && studentStandard) {
+
+                window.location.href = "subjects.html";
+
+            } else {
+
+                window.location.href = "login.html";
+
+            }
+
+        }
+
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("service-worker.js")
+                    .then(function () {
+                        console.log("EduConnect Service Worker registered");
+                    })
+                    .catch(function (error) {
+                        console.log("Service Worker registration failed:", error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

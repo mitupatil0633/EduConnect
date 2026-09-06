@@ -1,0 +1,1180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Internet Basics - EduConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient( 135deg, #eef2ff, #f0f9ff, #fdf4ff );
+            color: #334155;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: linear-gradient( 135deg, #1e3a8a, #4f46e5, #7c3aed );
+            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.25);
+        }
+
+            .navbar .logo {
+                color: white;
+                font-weight: bold;
+            }
+
+            .navbar nav a {
+                color: white;
+                font-weight: bold;
+                text-decoration: none;
+                transition: 0.2s;
+            }
+
+                .navbar nav a:hover {
+                    color: #ddd6fe;
+                }
+
+
+        /* =========================
+           MAIN PAGE
+        ========================= */
+
+        .internet-page {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .page-header {
+            text-align: center;
+            padding: 40px;
+            margin-bottom: 30px;
+            background: linear-gradient( 135deg, #ffffff, #eef2ff );
+            border-radius: 25px;
+            border: 2px solid #c7d2fe;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.12);
+        }
+
+        .standard-badge {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 25px;
+            background: linear-gradient( 135deg, #dbeafe, #ede9fe );
+            color: #3730a3;
+            border: 2px solid #a5b4fc;
+            font-weight: bold;
+        }
+
+        .page-header h1 {
+            color: #3730a3;
+            font-size: 38px;
+            margin: 15px 0;
+        }
+
+        .page-header p {
+            color: #64748b;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           INTRO CARD
+        ========================= */
+
+        .intro-card {
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 25px;
+            background: linear-gradient( 135deg, #ffffff, #eff6ff );
+            border-radius: 22px;
+            border: 2px solid #bfdbfe;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.10);
+        }
+
+            .intro-card h2 {
+                color: #2563eb;
+                margin-top: 0;
+            }
+
+            .intro-card p {
+                color: #64748b;
+                font-size: 17px;
+                line-height: 1.6;
+            }
+
+
+        /* =========================
+           LESSON GRID
+        ========================= */
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+        .lesson-card {
+            padding: 28px;
+            min-height: 180px;
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.10);
+            border: 2px solid #c7d2fe;
+            transition: 0.25s;
+        }
+
+            .lesson-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 28px rgba(79, 70, 229, 0.16);
+            }
+
+            .lesson-card:nth-child(1) {
+                background: linear-gradient( 135deg, #ffffff, #eff6ff );
+                border-color: #bfdbfe;
+            }
+
+            .lesson-card:nth-child(2) {
+                background: linear-gradient( 135deg, #ffffff, #f5f3ff );
+                border-color: #c4b5fd;
+            }
+
+            .lesson-card:nth-child(3) {
+                background: linear-gradient( 135deg, #ffffff, #ecfdf5 );
+                border-color: #a7f3d0;
+            }
+
+            .lesson-card:nth-child(4) {
+                background: linear-gradient( 135deg, #ffffff, #fdf2f8 );
+                border-color: #fbcfe8;
+            }
+
+            .lesson-card .icon {
+                font-size: 42px;
+            }
+
+            .lesson-card:nth-child(1) h3 {
+                color: #2563eb;
+            }
+
+            .lesson-card:nth-child(2) h3 {
+                color: #7c3aed;
+            }
+
+            .lesson-card:nth-child(3) h3 {
+                color: #059669;
+            }
+
+            .lesson-card:nth-child(4) h3 {
+                color: #db2777;
+            }
+
+            .lesson-card h3 {
+                font-size: 22px;
+            }
+
+            .lesson-card p {
+                color: #64748b;
+                line-height: 1.6;
+            }
+
+
+        /* =========================
+           QUIZ CARD
+        ========================= */
+
+        .quiz-card {
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient( 135deg, #ffffff, #f5f3ff );
+            border-radius: 25px;
+            border: 2px solid #c4b5fd;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);
+        }
+
+        .quiz-icon {
+            font-size: 50px;
+        }
+
+        .quiz-card h2 {
+            color: #6d28d9;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        #questionNumber {
+            font-weight: bold;
+            color: #7c3aed;
+        }
+
+        #questionText {
+            font-size: 21px;
+            color: #334155;
+            line-height: 1.5;
+            margin: 25px auto;
+            max-width: 900px;
+        }
+
+
+        /* =========================
+           ANSWERS
+        ========================= */
+
+        #answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .answer-btn {
+            min-height: 85px;
+            padding: 18px;
+            border: 2px solid #c7d2fe;
+            border-radius: 16px;
+            background: linear-gradient( 135deg, #dbeafe, #ede9fe );
+            color: #3730a3;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.4;
+            cursor: pointer;
+            transition: 0.25s;
+            white-space: normal;
+            overflow-wrap: break-word;
+            box-shadow: 0 5px 12px rgba(79, 70, 229, 0.08);
+        }
+
+            .answer-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 18px rgba(79, 70, 229, 0.15);
+            }
+
+            .answer-btn.correct {
+                background: #dcfce7;
+                border-color: #86efac;
+                color: #166534;
+            }
+
+            .answer-btn.wrong {
+                background: #fee2e2;
+                border-color: #fca5a5;
+                color: #991b1b;
+            }
+
+            .answer-btn:disabled {
+                cursor: default;
+            }
+
+
+        /* =========================
+           FEEDBACK
+        ========================= */
+
+        #feedback {
+            min-height: 35px;
+            margin: 25px;
+            font-size: 19px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+
+        /* =========================
+           NEXT BUTTON
+        ========================= */
+
+        #nextBtn {
+            display: none;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient( 135deg, #2563eb, #7c3aed );
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.20);
+            transition: 0.25s;
+        }
+
+            #nextBtn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 9px 20px rgba(79, 70, 229, 0.28);
+            }
+
+
+        /* =========================
+           FINAL SCORE
+        ========================= */
+
+        #finalScore {
+            display: none;
+            color: #4338ca;
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 15px;
+            background: linear-gradient( 135deg, #dbeafe, #ede9fe );
+            border: 2px solid #a5b4fc;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-button {
+            display: inline-block;
+            padding: 14px 25px;
+            background: linear-gradient( 135deg, #2563eb, #7c3aed );
+            color: white;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.18);
+            transition: 0.25s;
+        }
+
+            .back-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 9px 20px rgba(79, 70, 229, 0.25);
+            }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 45px;
+            padding: 30px 20px;
+            text-align: center;
+            background: linear-gradient( 135deg, #1e3a8a, #4f46e5, #7c3aed );
+            color: #e0e7ff;
+        }
+
+            footer h3 {
+                color: white;
+                margin-bottom: 8px;
+            }
+
+            footer p {
+                margin: 6px;
+            }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .internet-page {
+                width: 94%;
+                margin: 25px auto;
+                padding: 0;
+            }
+
+            .lesson-grid,
+            #answers {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header {
+                padding: 30px 18px;
+            }
+
+                .page-header h1 {
+                    font-size: 30px;
+                }
+
+                .page-header p {
+                    font-size: 16px;
+                }
+
+            .intro-card {
+                padding: 25px 18px;
+            }
+
+            .lesson-card {
+                padding: 23px;
+            }
+
+            .quiz-card {
+                padding: 25px 15px;
+            }
+
+            #questionText {
+                font-size: 18px;
+            }
+
+            .answer-btn {
+                min-height: 75px;
+                font-size: 16px;
+            }
+
+            .back-button {
+                width: 90%;
+                text-align: center;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="computer.html">
+                Computer
+            </a>
+
+            <a href="progress.html">
+                Progress
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="internet-page">
+
+
+        <!-- =========================
+             HEADER
+        ========================= -->
+
+        <section class="page-header">
+
+            <div class="standard-badge"
+                 id="standardBadge">
+
+                Standard 1
+
+            </div>
+
+            <h1>
+                🌐 Internet Basics
+            </h1>
+
+            <p id="description">
+                Learn how people use the internet.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             INTRO
+        ========================= -->
+
+        <section class="intro-card">
+
+            <h2 id="lessonTitle">
+                Internet Basics
+            </h2>
+
+            <p id="lessonIntro">
+                Learn about websites, browsers and online information.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             LESSON CARDS
+        ========================= -->
+
+        <section class="lesson-grid"
+                 id="lessonCards">
+        </section>
+
+
+        <!-- =========================
+             QUIZ
+        ========================= -->
+
+        <section class="quiz-card">
+
+            <div class="quiz-icon">
+                🧠
+            </div>
+
+            <h2>
+                Internet Basics Quiz
+            </h2>
+
+            <p id="questionNumber">
+                Question 1 of 4
+            </p>
+
+            <p id="questionText">
+                Loading question...
+            </p>
+
+            <div id="answers">
+            </div>
+
+            <div id="feedback">
+            </div>
+
+            <button id="nextBtn">
+                Next Question →
+            </button>
+
+            <div id="finalScore">
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BACK
+        ========================= -->
+
+        <a href="computer.html"
+           class="back-button">
+
+            ← Back to Computer
+
+        </a>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* =====================================
+           GET STUDENT STANDARD
+        ===================================== */
+
+        const standard =
+            parseInt(localStorage.getItem("studentStandard")) || 1;
+
+
+        /* =====================================
+           STANDARD CONTENT
+        ===================================== */
+
+        const lessons = {
+
+            1: {
+                title: "Standard 1: Introduction to the Internet",
+                description: "Learn what the internet is and how we use it.",
+                intro: "The internet connects computers and devices so people can share information and use online services.",
+                cards: [
+                    ["🌐", "Internet", "The internet connects computers and devices around the world."],
+                    ["💻", "Website", "A website is a collection of pages that can be viewed online."],
+                    ["🔍", "Search", "Search tools help users find information on the internet."],
+                    ["🌎", "Online World", "People can use the internet to learn, communicate and find information."]
+                ]
+            },
+
+            2: {
+                title: "Standard 2: Websites & Web Browsers",
+                description: "Learn about websites, browsers and simple online searches.",
+                intro: "A web browser lets users open websites and view information on the internet.",
+                cards: [
+                    ["🌐", "Website", "A website contains online pages and information."],
+                    ["🧭", "Web Browser", "A browser is software used to visit websites."],
+                    ["🔎", "Search Engine", "A search engine helps users find information online."],
+                    ["🔗", "Web Link", "A link can take users from one webpage to another."]
+                ]
+            },
+
+            3: {
+                title: "Standard 3: Online Information & Communication",
+                description: "Learn how people communicate and find information online.",
+                intro: "The internet provides many ways to communicate, learn and share information.",
+                cards: [
+                    ["📧", "Email", "Email allows people to send and receive digital messages."],
+                    ["💬", "Online Communication", "People can communicate using online messaging and other services."],
+                    ["📚", "Online Learning", "Websites can provide educational information and learning resources."],
+                    ["🔎", "Reliable Information", "Users should check information carefully before trusting or sharing it."]
+                ]
+            },
+
+            4: {
+                title: "Standard 4: Internet Services & Responsible Use",
+                description: "Understand internet services and responsible online behavior.",
+                intro: "The internet provides many useful services, and users should use them responsibly.",
+                cards: [
+                    ["☁️", "Cloud Services", "Online services can store and provide access to information over the internet."],
+                    ["📹", "Online Media", "People can watch videos, listen to audio and view other digital content online."],
+                    ["🛒", "Online Services", "The internet provides services such as shopping, learning and communication."],
+                    ["✅", "Responsible Use", "Users should communicate respectfully and make careful choices online."]
+                ]
+            },
+
+            5: {
+                title: "Standard 5: Internet, Networks & Web Technology",
+                description: "Understand networks, web technology and how internet services work.",
+                intro: "The internet is a large network of connected devices that uses technologies and services to exchange information.",
+                cards: [
+                    ["🌐", "Computer Networks", "A network connects computers and devices so they can communicate and share resources."],
+                    ["🖥️", "Web Browser", "Browsers request and display webpages from web servers."],
+                    ["📡", "Data Transfer", "Information can travel between connected devices across networks."],
+                    ["🔗", "Web Technologies", "Websites use technologies such as HTML, CSS and JavaScript to create interactive pages."]
+                ]
+            }
+
+        };
+
+
+        const lesson =
+            lessons[standard] || lessons[1];
+
+
+        document.getElementById("standardBadge").textContent =
+            "Standard " + standard;
+
+        document.getElementById("description").textContent =
+            lesson.description;
+
+        document.getElementById("lessonTitle").textContent =
+            lesson.title;
+
+        document.getElementById("lessonIntro").textContent =
+            lesson.intro;
+
+
+        const lessonCards =
+            document.getElementById("lessonCards");
+
+
+        lesson.cards.forEach(card => {
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "lesson-card";
+
+            div.innerHTML =
+                "<div class='icon'>" + card[0] + "</div>" +
+                "<h3>" + card[1] + "</h3>" +
+                "<p>" + card[2] + "</p>";
+
+            lessonCards.appendChild(div);
+
+        });
+
+
+        /* =====================================
+           STANDARD QUIZZES
+        ===================================== */
+
+        const quizzes = {
+
+            1: [
+
+                [
+                    "What does the internet connect?",
+                    [
+                        "Computers and devices",
+                        "Only televisions",
+                        "Only printers",
+                        "Only keyboards"
+                    ],
+                    0
+                ],
+
+                [
+                    "What is a website?",
+                    [
+                        "A collection of online pages",
+                        "A computer mouse",
+                        "A type of keyboard",
+                        "A printer part"
+                    ],
+                    0
+                ],
+
+                [
+                    "What can people use the internet for?",
+                    [
+                        "Learning and finding information",
+                        "Only turning on computers",
+                        "Only printing paper",
+                        "Only playing sounds"
+                    ],
+                    0
+                ],
+
+                [
+                    "What can a search tool help you do?",
+                    [
+                        "Find information online",
+                        "Clean a computer",
+                        "Connect a keyboard",
+                        "Print without a printer"
+                    ],
+                    0
+                ]
+
+            ],
+
+
+            2: [
+
+                [
+                    "What is a web browser used for?",
+                    [
+                        "Opening and viewing websites",
+                        "Printing paper",
+                        "Cleaning the monitor",
+                        "Storing electricity"
+                    ],
+                    0
+                ],
+
+                [
+                    "What does a search engine help users do?",
+                    [
+                        "Find information online",
+                        "Move the mouse",
+                        "Turn on a monitor",
+                        "Type without a keyboard"
+                    ],
+                    0
+                ],
+
+                [
+                    "What can a web link do?",
+                    [
+                        "Take you to another webpage",
+                        "Increase computer memory",
+                        "Print a keyboard",
+                        "Turn a monitor into a printer"
+                    ],
+                    0
+                ],
+
+                [
+                    "What does a website contain?",
+                    [
+                        "Online pages and information",
+                        "Only computer cables",
+                        "Only printer ink",
+                        "Only keyboard keys"
+                    ],
+                    0
+                ]
+
+            ],
+
+
+            3: [
+
+                [
+                    "What is email used for?",
+                    [
+                        "Sending and receiving digital messages",
+                        "Printing computer parts",
+                        "Cleaning a monitor",
+                        "Moving a mouse pointer"
+                    ],
+                    0
+                ],
+
+                [
+                    "How can the internet support learning?",
+                    [
+                        "It can provide educational information",
+                        "It removes the need for computers",
+                        "It turns websites into printers",
+                        "It creates physical books automatically"
+                    ],
+                    0
+                ],
+
+                [
+                    "Why should online information be checked carefully?",
+                    [
+                        "Not all information online is reliable",
+                        "All websites are identical",
+                        "Browsers cannot display information",
+                        "Search engines only show pictures"
+                    ],
+                    0
+                ],
+
+                [
+                    "What is online communication?",
+                    [
+                        "Communicating using internet services",
+                        "Repairing computer hardware",
+                        "Printing paper documents",
+                        "Changing monitor brightness"
+                    ],
+                    0
+                ]
+
+            ],
+
+
+            4: [
+
+                [
+                    "What are cloud services commonly used for?",
+                    [
+                        "Storing or accessing information online",
+                        "Cleaning computer screens",
+                        "Replacing keyboards",
+                        "Creating electricity"
+                    ],
+                    0
+                ],
+
+                [
+                    "Which is an example of online media?",
+                    [
+                        "A video viewed online",
+                        "A physical keyboard",
+                        "A computer cable",
+                        "A printer cartridge"
+                    ],
+                    0
+                ],
+
+                [
+                    "What is responsible internet use?",
+                    [
+                        "Making careful and respectful choices online",
+                        "Sharing every piece of information",
+                        "Ignoring all website rules",
+                        "Using computers without thinking"
+                    ],
+                    0
+                ],
+
+                [
+                    "Which activity can be an internet service?",
+                    [
+                        "Online learning",
+                        "Cleaning a keyboard",
+                        "Replacing a monitor",
+                        "Connecting a mouse cable"
+                    ],
+                    0
+                ]
+
+            ],
+
+
+            5: [
+
+                [
+                    "What is a computer network?",
+                    [
+                        "Connected devices that can communicate",
+                        "A single keyboard",
+                        "A monitor screen",
+                        "A printer cartridge"
+                    ],
+                    0
+                ],
+
+                [
+                    "What does a web browser do?",
+                    [
+                        "Requests and displays webpages",
+                        "Creates computer electricity",
+                        "Repairs hardware automatically",
+                        "Stores paper documents"
+                    ],
+                    0
+                ],
+
+                [
+                    "What happens during data transfer?",
+                    [
+                        "Information moves between connected devices",
+                        "A keyboard becomes a monitor",
+                        "A printer becomes a mouse",
+                        "A computer loses its hardware"
+                    ],
+                    0
+                ],
+
+                [
+                    "Which technologies can be used to create webpages?",
+                    [
+                        "HTML, CSS and JavaScript",
+                        "Keyboard, mouse and printer",
+                        "Monitor, speaker and scanner",
+                        "CPU, RAM and power cable"
+                    ],
+                    0
+                ]
+
+            ]
+
+        };
+
+
+        let questions =
+            quizzes[standard] || quizzes[1];
+
+        let currentQuestion = 0;
+
+        let score = 0;
+
+        let answered = false;
+
+
+        /* =====================================
+           SHOW QUESTION
+        ===================================== */
+
+        function showQuestion() {
+
+            const q =
+                questions[currentQuestion];
+
+            answered = false;
+
+            document.getElementById("questionNumber").textContent =
+                "Question " +
+                (currentQuestion + 1) +
+                " of " +
+                questions.length;
+
+            document.getElementById("questionText").textContent =
+                q[0];
+
+            document.getElementById("feedback").textContent =
+                "";
+
+            document.getElementById("nextBtn").style.display =
+                "none";
+
+
+            const answers =
+                document.getElementById("answers");
+
+            answers.innerHTML =
+                "";
+
+
+            q[1].forEach((answer, index) => {
+
+                const button =
+                    document.createElement("button");
+
+                button.className =
+                    "answer-btn";
+
+                button.textContent =
+                    answer;
+
+                button.onclick =
+                    function () {
+
+                        checkAnswer(index, button);
+
+                    };
+
+                answers.appendChild(button);
+
+            });
+
+        }
+
+
+        /* =====================================
+           CHECK ANSWER
+        ===================================== */
+
+        function checkAnswer(selected, button) {
+
+            if (answered) {
+                return;
+            }
+
+            answered = true;
+
+            const q =
+                questions[currentQuestion];
+
+            const buttons =
+                document.querySelectorAll(".answer-btn");
+
+
+            buttons.forEach(btn => {
+
+                btn.disabled = true;
+
+            });
+
+
+            if (selected === q[2]) {
+
+                score++;
+
+                button.classList.add("correct");
+
+                document.getElementById("feedback").textContent =
+                    "🎉 Correct! Great job!";
+
+            } else {
+
+                button.classList.add("wrong");
+
+                buttons[q[2]].classList.add("correct");
+
+                document.getElementById("feedback").textContent =
+                    "❌ Not quite. The correct answer is highlighted.";
+
+            }
+
+
+            document.getElementById("nextBtn").style.display =
+                "inline-block";
+
+        }
+
+
+        /* =====================================
+           NEXT QUESTION
+        ===================================== */
+
+        document.getElementById("nextBtn").onclick =
+            function () {
+
+                currentQuestion++;
+
+                if (currentQuestion >= questions.length) {
+
+                    finishQuiz();
+
+                } else {
+
+                    showQuestion();
+
+                }
+
+            };
+
+
+        /* =====================================
+           FINISH QUIZ
+        ===================================== */
+
+        function finishQuiz() {
+
+            document.getElementById("questionNumber").textContent =
+                "Quiz Complete!";
+
+            document.getElementById("questionText").textContent =
+                "🎉 Well done! You completed the Internet Basics quiz.";
+
+            document.getElementById("answers").innerHTML =
+                "";
+
+            document.getElementById("feedback").textContent =
+                "";
+
+            document.getElementById("nextBtn").style.display =
+                "none";
+
+            document.getElementById("finalScore").style.display =
+                "block";
+
+            document.getElementById("finalScore").textContent =
+                "Your Score: " +
+                score +
+                " / " +
+                questions.length;
+
+
+            localStorage.setItem(
+                "internetScore",
+                score
+            );
+
+            localStorage.setItem(
+                "computerInternetScore",
+                score
+            );
+
+        }
+
+
+        /* =====================================
+           START QUIZ
+        ===================================== */
+
+        showQuestion();
+
+    </script>
+
+</body>
+
+</html>

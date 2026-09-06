@@ -1,0 +1,909 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Science Quiz - EduConnect</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        .science-quiz-page {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px 70px;
+        }
+
+        .science-quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            .science-quiz-header .welcome {
+                color: #2563eb;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+
+            .science-quiz-header h1 {
+                font-size: 38px;
+                color: #1e3a8a;
+                margin: 10px 0;
+            }
+
+        #quizStandard {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
+        }
+
+        .quiz-progress {
+            text-align: center;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .quiz-card h2 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .answer-buttons {
+            display: grid;
+            gap: 14px;
+        }
+
+            .answer-buttons button {
+                width: 100%;
+                padding: 16px;
+                border: none;
+                border-radius: 12px;
+                background: #eef2ff;
+                color: #172554;
+                font-size: 17px;
+                font-weight: bold;
+                cursor: pointer;
+                text-align: left;
+                transition: 0.2s;
+            }
+
+                .answer-buttons button:hover {
+                    background: #dbeafe;
+                    transform: translateY(-2px);
+                }
+
+                .answer-buttons button.correct {
+                    background: #bbf7d0;
+                    color: #166534;
+                }
+
+                .answer-buttons button.wrong {
+                    background: #fecaca;
+                    color: #991b1b;
+                }
+
+                .answer-buttons button:disabled {
+                    cursor: default;
+                }
+
+        #quizResult {
+            margin-top: 22px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 28px;
+        }
+
+        .correct-message {
+            color: #15803d;
+        }
+
+        .wrong-message {
+            color: #dc2626;
+        }
+
+        .next-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        #nextQuestion {
+            display: none;
+            padding: 13px 28px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            #nextQuestion:hover {
+                background: #1d4ed8;
+            }
+
+        .score-card {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
+        }
+
+            .score-card .trophy {
+                font-size: 65px;
+            }
+
+            .score-card h2 {
+                color: #1e3a8a;
+                font-size: 30px;
+            }
+
+        .final-score {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .score-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+            .quiz-buttons button {
+                padding: 13px 24px;
+                border: none;
+                border-radius: 10px;
+                background: #2563eb;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .quiz-buttons button:hover {
+                    background: #1d4ed8;
+                }
+
+        @media (max-width: 600px) {
+
+            .science-quiz-header h1 {
+                font-size: 30px;
+            }
+
+            .quiz-card {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="science.html">
+                Science
+            </a>
+
+            <a href="#" onclick="logoutStudent()">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Science Quiz -->
+
+    <main class="science-quiz-page">
+
+
+        <!-- Header -->
+
+        <div class="science-quiz-header">
+
+            <p class="welcome">
+                SCIENCE
+            </p>
+
+            <h1>
+                🧠 Science Quiz
+            </h1>
+
+            <p id="quizStandard">
+                Standard 1
+            </p>
+
+        </div>
+
+
+        <!-- Quiz Card -->
+
+        <section class="quiz-card"
+                 id="quizCard">
+
+            <div class="quiz-progress"
+                 id="quizProgress">
+
+                Question 1 of 5
+
+            </div>
+
+
+            <h2 id="quizQuestion">
+                Loading question...
+            </h2>
+
+
+            <div class="answer-buttons">
+
+                <button id="answer0"
+                        onclick="selectScienceAnswer(0)">
+                    Answer 1
+                </button>
+
+                <button id="answer1"
+                        onclick="selectScienceAnswer(1)">
+                    Answer 2
+                </button>
+
+                <button id="answer2"
+                        onclick="selectScienceAnswer(2)">
+                    Answer 3
+                </button>
+
+                <button id="answer3"
+                        onclick="selectScienceAnswer(3)">
+                    Answer 4
+                </button>
+
+            </div>
+
+
+            <p id="quizResult"></p>
+
+
+            <div class="next-container">
+
+                <button id="nextQuestion"
+                        onclick="nextScienceQuestion()">
+
+                    Next Question →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Score -->
+
+        <section class="score-card"
+                 id="scoreCard">
+
+            <div class="trophy">
+                🏆
+            </div>
+
+            <h2>
+                Science Quiz Complete!
+            </h2>
+
+            <div class="final-score"
+                 id="finalScore">
+
+                Score: 0 / 5
+
+            </div>
+
+            <p class="score-message"
+               id="scoreMessage">
+
+                Great work!
+
+            </p>
+
+
+            <div class="quiz-buttons">
+
+                <button onclick="restartScienceQuiz()">
+                    🔄 Try Again
+                </button>
+
+                <button onclick="window.location.href='science.html'">
+                    ← Back to Science
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* =====================================
+           STANDARD
+        ===================================== */
+
+        const standard =
+            Number(localStorage.getItem("studentStandard")) || 1;
+
+
+        document.getElementById("quizStandard").textContent =
+            "Standard " + standard;
+
+
+        /* =====================================
+           SCIENCE QUESTIONS
+        ===================================== */
+
+        const scienceQuestions = {
+
+            1: [
+
+                {
+                    question: "Which part of a plant is usually under the ground?",
+                    answers: ["Root", "Leaf", "Flower", "Fruit"],
+                    correct: 0
+                },
+
+                {
+                    question: "Which animal says 'meow'?",
+                    answers: ["Dog", "Cat", "Cow", "Horse"],
+                    correct: 1
+                },
+
+                {
+                    question: "What do plants need from the Sun?",
+                    answers: ["Sunlight", "Snow", "Stones", "Sand"],
+                    correct: 0
+                },
+
+                {
+                    question: "Which one is a living thing?",
+                    answers: ["Rock", "Chair", "Tree", "Cup"],
+                    correct: 2
+                },
+
+                {
+                    question: "Which sense do we use with our eyes?",
+                    answers: ["Hearing", "Sight", "Taste", "Smell"],
+                    correct: 1
+                }
+
+            ],
+
+
+            2: [
+
+                {
+                    question: "Which part of a plant absorbs water from the soil?",
+                    answers: ["Roots", "Flowers", "Fruits", "Leaves"],
+                    correct: 0
+                },
+
+                {
+                    question: "Which animal lives mainly in water?",
+                    answers: ["Fish", "Lion", "Elephant", "Horse"],
+                    correct: 0
+                },
+
+                {
+                    question: "What gives Earth light during the day?",
+                    answers: ["Moon", "Sun", "Stars", "Clouds"],
+                    correct: 1
+                },
+
+                {
+                    question: "Which of these is a solid?",
+                    answers: ["Water", "Milk", "Stone", "Juice"],
+                    correct: 2
+                },
+
+                {
+                    question: "Which body part helps us hear sounds?",
+                    answers: ["Eyes", "Ears", "Nose", "Hands"],
+                    correct: 1
+                }
+
+            ],
+
+
+            3: [
+
+                {
+                    question: "What do green plants use to make their food?",
+                    answers: ["Sunlight", "Plastic", "Sand", "Smoke"],
+                    correct: 0
+                },
+
+                {
+                    question: "Which animal is a mammal?",
+                    answers: ["Frog", "Fish", "Dog", "Butterfly"],
+                    correct: 2
+                },
+
+                {
+                    question: "Which state of matter has a fixed shape?",
+                    answers: ["Gas", "Liquid", "Solid", "Steam"],
+                    correct: 2
+                },
+
+                {
+                    question: "What force pulls objects toward Earth?",
+                    answers: ["Gravity", "Light", "Sound", "Heat"],
+                    correct: 0
+                },
+
+                {
+                    question: "Which organ pumps blood around the body?",
+                    answers: ["Lungs", "Brain", "Heart", "Stomach"],
+                    correct: 2
+                }
+
+            ],
+
+
+            4: [
+
+                {
+                    question: "What process allows green plants to make food using sunlight?",
+                    answers: [
+                        "Photosynthesis",
+                        "Digestion",
+                        "Evaporation",
+                        "Freezing"
+                    ],
+                    correct: 0
+                },
+
+                {
+                    question: "What is an adaptation?",
+                    answers: [
+                        "A feature that helps an organism survive",
+                        "A type of weather",
+                        "A kind of rock",
+                        "A form of energy"
+                    ],
+                    correct: 0
+                },
+
+                {
+                    question: "Which change turns liquid water into water vapour?",
+                    answers: [
+                        "Freezing",
+                        "Melting",
+                        "Evaporation",
+                        "Condensation"
+                    ],
+                    correct: 2
+                },
+
+                {
+                    question: "Which form of energy is associated with moving objects?",
+                    answers: [
+                        "Kinetic energy",
+                        "Soundless energy",
+                        "Stored water",
+                        "Chemical weather"
+                    ],
+                    correct: 0
+                },
+
+                {
+                    question: "Which organ system is mainly responsible for breathing?",
+                    answers: [
+                        "Digestive system",
+                        "Respiratory system",
+                        "Skeletal system",
+                        "Nervous system"
+                    ],
+                    correct: 1
+                }
+
+            ],
+
+
+            5: [
+
+                {
+                    question: "Which gas do plants take in during photosynthesis?",
+                    answers: [
+                        "Oxygen",
+                        "Carbon dioxide",
+                        "Nitrogen",
+                        "Hydrogen"
+                    ],
+                    correct: 1
+                },
+
+                {
+                    question: "What is the main function of the roots of a plant?",
+                    answers: [
+                        "Absorb water and minerals",
+                        "Make seeds fly",
+                        "Produce sound",
+                        "Catch insects only"
+                    ],
+                    correct: 0
+                },
+
+                {
+                    question: "Which change of state happens when water vapour becomes liquid water?",
+                    answers: [
+                        "Melting",
+                        "Freezing",
+                        "Condensation",
+                        "Evaporation"
+                    ],
+                    correct: 2
+                },
+
+                {
+                    question: "Which force opposes motion between two surfaces?",
+                    answers: [
+                        "Gravity",
+                        "Friction",
+                        "Magnetism",
+                        "Buoyancy"
+                    ],
+                    correct: 1
+                },
+
+                {
+                    question: "Which part of a cell contains genetic material and controls many cell activities?",
+                    answers: [
+                        "Cell wall",
+                        "Nucleus",
+                        "Vacuole",
+                        "Cytoplasm"
+                    ],
+                    correct: 1
+                }
+
+            ]
+
+        };
+
+
+        /* =====================================
+           SELECT QUESTIONS
+        ===================================== */
+
+        const questions =
+            scienceQuestions[standard] ||
+            scienceQuestions[1];
+
+
+        let currentQuestion = 0;
+
+        let score = 0;
+
+        let answered = false;
+
+
+        /* =====================================
+           LOAD QUESTION
+        ===================================== */
+
+        function loadScienceQuestion() {
+
+            answered = false;
+
+            const question =
+                questions[currentQuestion];
+
+
+            document.getElementById("quizProgress").textContent =
+                "Question " +
+                (currentQuestion + 1) +
+                " of " +
+                questions.length;
+
+
+            document.getElementById("quizQuestion").textContent =
+                question.question;
+
+
+            document.getElementById("quizResult").textContent = "";
+
+            document.getElementById("quizResult").className = "";
+
+
+            document.getElementById("nextQuestion").style.display =
+                "none";
+
+
+            for (let i = 0; i < 4; i++) {
+
+                const button =
+                    document.getElementById("answer" + i);
+
+                button.textContent =
+                    question.answers[i];
+
+                button.disabled = false;
+
+                button.classList.remove(
+                    "correct",
+                    "wrong"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================
+           SELECT ANSWER
+        ===================================== */
+
+        function selectScienceAnswer(selected) {
+
+            if (answered) {
+                return;
+            }
+
+
+            answered = true;
+
+
+            const question =
+                questions[currentQuestion];
+
+
+            const buttons = [
+
+                document.getElementById("answer0"),
+                document.getElementById("answer1"),
+                document.getElementById("answer2"),
+                document.getElementById("answer3")
+
+            ];
+
+
+            buttons.forEach(function (button) {
+
+                button.disabled = true;
+
+            });
+
+
+            if (selected === question.correct) {
+
+                score++;
+
+                buttons[selected].classList.add("correct");
+
+                document.getElementById("quizResult").textContent =
+                    "✅ Correct! Great job!";
+
+                document.getElementById("quizResult").className =
+                    "correct-message";
+
+            }
+
+            else {
+
+                buttons[selected].classList.add("wrong");
+
+                buttons[question.correct].classList.add("correct");
+
+                document.getElementById("quizResult").textContent =
+                    "❌ Not quite. The correct answer is: " +
+                    question.answers[question.correct];
+
+                document.getElementById("quizResult").className =
+                    "wrong-message";
+
+            }
+
+
+            document.getElementById("nextQuestion").style.display =
+                "inline-block";
+
+        }
+
+
+        /* =====================================
+           NEXT QUESTION
+        ===================================== */
+
+        function nextScienceQuestion() {
+
+            currentQuestion++;
+
+
+            if (currentQuestion < questions.length) {
+
+                loadScienceQuestion();
+
+            }
+
+            else {
+
+                finishScienceQuiz();
+
+            }
+
+        }
+
+
+        /* =====================================
+           FINISH QUIZ
+        ===================================== */
+
+        function finishScienceQuiz() {
+
+            localStorage.setItem(
+                "scienceScore",
+                score
+            );
+
+
+            document.getElementById("quizCard").style.display =
+                "none";
+
+
+            document.getElementById("scoreCard").style.display =
+                "block";
+
+
+            document.getElementById("finalScore").textContent =
+                "Score: " +
+                score +
+                " / " +
+                questions.length;
+
+
+            let message = "";
+
+
+            if (score === 5) {
+
+                message =
+                    "🌟 Perfect score! Amazing science work!";
+
+            }
+
+            else if (score >= 4) {
+
+                message =
+                    "🎉 Excellent work! Keep learning!";
+
+            }
+
+            else if (score >= 3) {
+
+                message =
+                    "👍 Good job! Keep practicing!";
+
+            }
+
+            else {
+
+                message =
+                    "💪 Keep practicing. You can do it!";
+
+            }
+
+
+            document.getElementById("scoreMessage").textContent =
+                message;
+
+        }
+
+
+        /* =====================================
+           RESTART
+        ===================================== */
+
+        function restartScienceQuiz() {
+
+            currentQuestion = 0;
+
+            score = 0;
+
+            document.getElementById("scoreCard").style.display =
+                "none";
+
+            document.getElementById("quizCard").style.display =
+                "block";
+
+            loadScienceQuestion();
+
+        }
+
+
+        /* =====================================
+           START
+        ===================================== */
+
+        loadScienceQuestion();
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,902 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>English Progress - EduConnect</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        /* =====================================
+           PAGE
+        ===================================== */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef7ff, #f7f0ff);
+            color: #17324d;
+        }
+
+
+        /* =====================================
+           NAVBAR
+        ===================================== */
+
+        .navbar {
+            background: white;
+            min-height: 70px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            background: linear-gradient( 90deg, #1677ff, #7b2cff, #ff3c9e );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+            .navbar nav a {
+                text-decoration: none;
+                color: #29435c;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+                .navbar nav a:hover {
+                    color: #6b35e8;
+                }
+
+
+        /* =====================================
+           MAIN PAGE
+        ===================================== */
+
+        .progress-page {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 45px 20px 60px;
+        }
+
+
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        .progress-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+            .progress-header .welcome {
+                color: #2864e8;
+                font-size: 14px;
+                font-weight: bold;
+                letter-spacing: 3px;
+                margin-bottom: 8px;
+            }
+
+            .progress-header h1 {
+                margin: 8px 0;
+                font-size: 38px;
+                color: #123f69;
+            }
+
+        .standard-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 9px 24px;
+            border-radius: 30px;
+            background: linear-gradient( 135deg, #dff0ff, #e9ddff );
+            color: #365acb;
+            border: 2px solid #c8dcff;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(67, 102, 210, 0.12);
+        }
+
+        #progressDescription {
+            margin-top: 15px;
+            font-size: 17px;
+            color: #5c7186;
+        }
+
+
+        /* =====================================
+           PROGRESS CARDS
+        ===================================== */
+
+        .progress-card {
+            background: white;
+            padding: 28px;
+            margin-bottom: 24px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(51, 79, 120, 0.10);
+            border: 1px solid rgba(100, 130, 180, 0.10);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+            .progress-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 13px 30px rgba(51, 79, 120, 0.14);
+            }
+
+            .progress-card h2 {
+                margin-top: 0;
+                margin-bottom: 14px;
+                color: #174d7b;
+                font-size: 23px;
+            }
+
+        .score-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #405a72;
+            margin-bottom: 13px;
+        }
+
+            .score-text strong {
+                color: #2864e8;
+            }
+
+        .percentage {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 9px;
+            color: #5b49c9;
+        }
+
+
+        /* =====================================
+           DIFFERENT CARD ACCENTS
+        ===================================== */
+
+        .progress-card:nth-of-type(1) {
+            border-left: 6px solid #3b82f6;
+        }
+
+        .progress-card:nth-of-type(2) {
+            border-left: 6px solid #8b5cf6;
+        }
+
+        .progress-card:nth-of-type(3) {
+            border-left: 6px solid #ec4899;
+        }
+
+        .progress-card:nth-of-type(4) {
+            border-left: 6px solid #f59e0b;
+        }
+
+        .progress-card:nth-of-type(5) {
+            border-left: 6px solid #10b981;
+        }
+
+
+        /* =====================================
+           PROGRESS BAR
+        ===================================== */
+
+        .progress-bar-background {
+            width: 100%;
+            height: 18px;
+            background: #e8eef7;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.06);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient( 90deg, #2864e8, #7b3ff2, #ec3f9f );
+            border-radius: 20px;
+            transition: width 0.7s ease;
+        }
+
+
+        /* =====================================
+           TOTAL CARD
+        ===================================== */
+
+        .total-card {
+            text-align: center;
+            background: linear-gradient( 135deg, #ffffff, #f4efff );
+            border: 2px solid #ddd2ff;
+        }
+
+            .total-card h2 {
+                color: #6236c7;
+            }
+
+        .total-score {
+            font-size: 34px;
+            font-weight: bold;
+            color: #2864e8;
+            margin: 12px 0;
+        }
+
+        .total-card .progress-bar-background {
+            margin-top: 20px;
+        }
+
+
+        /* =====================================
+           BUTTONS
+        ===================================== */
+
+        .english-back {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+            .english-back button {
+                padding: 14px 25px;
+                border: none;
+                border-radius: 12px;
+                background: linear-gradient( 135deg, #2864e8, #7337e8 );
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0 7px 18px rgba(76, 68, 200, 0.25);
+                transition: 0.25s ease;
+            }
+
+                .english-back button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 22px rgba(76, 68, 200, 0.32);
+                }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer {
+            text-align: center;
+            background: white;
+            padding: 30px 20px;
+            border-top: 1px solid #e5e9f2;
+            color: #66788a;
+        }
+
+            footer h3 {
+                margin-bottom: 8px;
+                color: #365acb;
+                font-size: 22px;
+            }
+
+            footer p {
+                margin: 6px 0;
+            }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+                .navbar nav {
+                    gap: 12px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+
+                    .navbar nav a {
+                        font-size: 14px;
+                    }
+
+            .progress-page {
+                padding: 30px 15px 45px;
+            }
+
+            .progress-header h1 {
+                font-size: 30px;
+            }
+
+            .progress-card {
+                padding: 21px;
+                border-radius: 17px;
+            }
+
+                .progress-card h2 {
+                    font-size: 20px;
+                }
+
+            .total-score {
+                font-size: 28px;
+            }
+
+            .english-back {
+                flex-direction: column;
+            }
+
+                .english-back button {
+                    width: 100%;
+                }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓
+            <span class="logo-text">
+                EduConnect
+            </span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="english.html">
+                English
+            </a>
+
+            <a href="#"
+               onclick="logoutStudent()">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN PROGRESS PAGE
+    ========================================= -->
+
+    <main class="progress-page">
+
+
+        <!-- HEADER -->
+
+        <div class="progress-header">
+
+            <p class="welcome">
+                ENGLISH LEARNING
+            </p>
+
+            <h1>
+                📊 English Progress
+            </h1>
+
+            <div class="standard-badge">
+
+                <span id="standardNumber">
+                    Standard 1
+                </span>
+
+            </div>
+
+            <p id="progressDescription">
+                Track your English learning progress and see how far you've come.
+            </p>
+
+        </div>
+
+
+
+        <!-- READING -->
+
+        <section class="progress-card">
+
+            <h2>
+                📖 Reading
+            </h2>
+
+            <p class="score-text">
+
+                Reading Score:
+                <strong id="readingProgress">
+                    0 / 1
+                </strong>
+
+            </p>
+
+            <div class="progress-bar-background">
+
+                <div id="readingBar"
+                     class="progress-bar-fill">
+                </div>
+
+            </div>
+
+            <p id="readingPercentage"
+               class="percentage">
+                0%
+            </p>
+
+        </section>
+
+
+
+        <!-- VOCABULARY -->
+
+        <section class="progress-card">
+
+            <h2>
+                📝 Vocabulary
+            </h2>
+
+            <p class="score-text">
+
+                Vocabulary Score:
+                <strong id="vocabularyProgress">
+                    0 / 1
+                </strong>
+
+            </p>
+
+            <div class="progress-bar-background">
+
+                <div id="vocabularyBar"
+                     class="progress-bar-fill">
+                </div>
+
+            </div>
+
+            <p id="vocabularyPercentage"
+               class="percentage">
+                0%
+            </p>
+
+        </section>
+
+
+
+        <!-- GRAMMAR -->
+
+        <section class="progress-card">
+
+            <h2>
+                ✏️ Grammar
+            </h2>
+
+            <p class="score-text">
+
+                Grammar Score:
+                <strong id="grammarProgress">
+                    0 / 1
+                </strong>
+
+            </p>
+
+            <div class="progress-bar-background">
+
+                <div id="grammarBar"
+                     class="progress-bar-fill">
+                </div>
+
+            </div>
+
+            <p id="grammarPercentage"
+               class="percentage">
+                0%
+            </p>
+
+        </section>
+
+
+
+        <!-- TOTAL ENGLISH -->
+
+        <section class="progress-card total-card">
+
+            <h2>
+                🏆 Total English Score
+            </h2>
+
+            <p id="totalEnglishProgress"
+               class="total-score">
+                0 / 3
+            </p>
+
+            <div class="progress-bar-background">
+
+                <div id="englishTotalBar"
+                     class="progress-bar-fill">
+                </div>
+
+            </div>
+
+            <p id="englishTotalPercentage"
+               class="percentage">
+                0%
+            </p>
+
+        </section>
+
+
+
+        <!-- MATHEMATICS -->
+
+        <section class="progress-card">
+
+            <h2>
+                🔢 Mathematics Progress
+            </h2>
+
+            <p class="score-text">
+
+                Mathematics Score:
+                <strong id="mathProgress">
+                    0 / 5
+                </strong>
+
+            </p>
+
+            <div class="progress-bar-background">
+
+                <div id="mathBar"
+                     class="progress-bar-fill">
+                </div>
+
+            </div>
+
+            <p id="mathPercentage"
+               class="percentage">
+                0%
+            </p>
+
+        </section>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="english-back">
+
+            <button onclick="window.location.href='english.html'">
+                ← Back to English
+            </button>
+
+            <button onclick="window.location.href='subjects.html'">
+                📚 Back to Subjects
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         MAIN JAVASCRIPT
+    ========================================= -->
+
+    <script src="script.js"></script>
+
+
+
+    <!-- =========================================
+         PROGRESS JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* =====================================
+                   STANDARD
+                ===================================== */
+
+                let standard =
+                    parseInt(
+                        localStorage.getItem(
+                            "studentStandard"
+                        )
+                    ) || 1;
+
+
+                if (
+                    standard < 1 ||
+                    standard > 5
+                ) {
+
+                    standard = 1;
+
+                }
+
+
+                document.getElementById(
+                    "standardNumber"
+                ).textContent =
+                    "Standard " + standard;
+
+
+
+                /* =====================================
+                   GET SCORES
+                ===================================== */
+
+                const readingScore =
+                    Number(
+                        localStorage.getItem(
+                            "readingScore"
+                        )
+                    ) || 0;
+
+
+                const vocabularyScore =
+                    Number(
+                        localStorage.getItem(
+                            "vocabularyScore"
+                        )
+                    ) || 0;
+
+
+                const grammarScore =
+                    Number(
+                        localStorage.getItem(
+                            "grammarScore"
+                        )
+                    ) || 0;
+
+
+                const mathScore =
+                    Number(
+                        localStorage.getItem(
+                            "mathScore"
+                        )
+                    ) || 0;
+
+
+
+                /* =====================================
+                   ENGLISH TOTAL
+                ===================================== */
+
+                const totalEnglish =
+                    readingScore +
+                    vocabularyScore +
+                    grammarScore;
+
+
+
+                /* =====================================
+                   DISPLAY SCORES
+                ===================================== */
+
+                document.getElementById(
+                    "readingProgress"
+                ).textContent =
+                    readingScore + " / 1";
+
+
+                document.getElementById(
+                    "vocabularyProgress"
+                ).textContent =
+                    vocabularyScore + " / 1";
+
+
+                document.getElementById(
+                    "grammarProgress"
+                ).textContent =
+                    grammarScore + " / 1";
+
+
+                document.getElementById(
+                    "totalEnglishProgress"
+                ).textContent =
+                    totalEnglish + " / 3";
+
+
+                document.getElementById(
+                    "mathProgress"
+                ).textContent =
+                    mathScore + " / 5";
+
+
+
+                /* =====================================
+                   CALCULATE PERCENTAGES
+                ===================================== */
+
+                const readingPercentage =
+                    readingScore * 100;
+
+
+                const vocabularyPercentage =
+                    vocabularyScore * 100;
+
+
+                const grammarPercentage =
+                    grammarScore * 100;
+
+
+                const englishPercentage =
+                    Math.round(
+                        (totalEnglish / 3) * 100
+                    );
+
+
+                const mathPercentage =
+                    Math.round(
+                        (mathScore / 5) * 100
+                    );
+
+
+
+                /* =====================================
+                   READING
+                ===================================== */
+
+                document.getElementById(
+                    "readingBar"
+                ).style.width =
+                    readingPercentage + "%";
+
+
+                document.getElementById(
+                    "readingPercentage"
+                ).textContent =
+                    readingPercentage + "%";
+
+
+
+                /* =====================================
+                   VOCABULARY
+                ===================================== */
+
+                document.getElementById(
+                    "vocabularyBar"
+                ).style.width =
+                    vocabularyPercentage + "%";
+
+
+                document.getElementById(
+                    "vocabularyPercentage"
+                ).textContent =
+                    vocabularyPercentage + "%";
+
+
+
+                /* =====================================
+                   GRAMMAR
+                ===================================== */
+
+                document.getElementById(
+                    "grammarBar"
+                ).style.width =
+                    grammarPercentage + "%";
+
+
+                document.getElementById(
+                    "grammarPercentage"
+                ).textContent =
+                    grammarPercentage + "%";
+
+
+
+                /* =====================================
+                   TOTAL ENGLISH
+                ===================================== */
+
+                document.getElementById(
+                    "englishTotalBar"
+                ).style.width =
+                    englishPercentage + "%";
+
+
+                document.getElementById(
+                    "englishTotalPercentage"
+                ).textContent =
+                    englishPercentage + "%";
+
+
+
+                /* =====================================
+                   MATHEMATICS
+                ===================================== */
+
+                document.getElementById(
+                    "mathBar"
+                ).style.width =
+                    mathPercentage + "%";
+
+
+                document.getElementById(
+                    "mathPercentage"
+                ).textContent =
+                    mathPercentage + "%";
+
+
+            }
+
+        );
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Science - EduConnect</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="#" onclick="scienceLogout()">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         SCIENCE LEARNING
+    ========================= -->
+
+    <main class="subject-page">
+
+        <h1>
+            🔬 Science
+        </h1>
+
+
+        <p id="scienceStandard">
+            🎓 Standard 1
+        </p>
+
+
+        <!-- =========================
+             SCIENCE LESSON
+        ========================= -->
+
+        <div class="subject-card">
+
+            <h2 id="scienceLessonTitle">
+                🌱 Plants
+            </h2>
+
+            <p id="scienceLessonText">
+                Learn about plants and how they grow.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             SCIENCE TOPIC
+        ========================= -->
+
+        <div class="subject-card">
+
+            <h2 id="scienceTopicTitle">
+                🐶 Animals
+            </h2>
+
+            <p id="scienceTopicText">
+                Discover animals and their homes.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             EXTRA SCIENCE TOPIC
+        ========================= -->
+
+        <div class="subject-card">
+
+            <h2 id="scienceExtraTitle">
+                ☀️ Our World
+            </h2>
+
+            <p id="scienceExtraText">
+                Learn about the Sun, Earth and things around us.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             QUIZ BUTTON
+        ========================= -->
+
+        <div class="quiz-button-container">
+
+            <button onclick="startScienceQuiz()">
+
+                🧠 Start Science Quiz
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             BACK BUTTON
+        ========================= -->
+
+        <button onclick="window.location.href='subjects.html'">
+
+            ← Back to Subjects
+
+        </button>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        /* =========================
+           GET STUDENT STANDARD
+        ========================= */
+
+        let standard =
+            Number(
+                localStorage.getItem("studentStandard")
+            ) || 1;
+
+
+        if (standard < 1 || standard > 5) {
+
+            standard = 1;
+
+        }
+
+
+        /* =========================
+           SCIENCE CONTENT
+        ========================= */
+
+        const scienceContent = {
+
+
+            /* =========================
+               STANDARD 1
+            ========================= */
+
+            1: {
+
+                lessonTitle:
+                    "🌱 Plants Around Us",
+
+                lessonText:
+                    "Plants are living things. They need water, air and sunlight to grow. Learn about roots, stems, leaves and flowers.",
+
+                topicTitle:
+                    "🐶 Animals",
+
+                topicText:
+                    "Animals live in different places. Some animals live on land, some live in water, and some can fly.",
+
+                extraTitle:
+                    "☀️ The Sun and Our World",
+
+                extraText:
+                    "The Sun gives us light and warmth. Earth is the planet where we live."
+
+            },
+
+
+            /* =========================
+               STANDARD 2
+            ========================= */
+
+            2: {
+
+                lessonTitle:
+                    "🌿 Parts of a Plant",
+
+                lessonText:
+                    "Plants have roots, stems, leaves, flowers and fruits. Each part has an important job.",
+
+                topicTitle:
+                    "🐘 Animal Groups",
+
+                topicText:
+                    "Animals can be grouped by where they live and how they move. Some walk, some swim and some fly.",
+
+                extraTitle:
+                    "💧 Water and Weather",
+
+                extraText:
+                    "Water is important for living things. Weather can be sunny, rainy, windy or cloudy."
+
+            },
+
+
+            /* =========================
+               STANDARD 3
+            ========================= */
+
+            3: {
+
+                lessonTitle:
+                    "🌱 Plant Growth",
+
+                lessonText:
+                    "Plants grow from seeds. They need sunlight, water, air and suitable soil. Roots take in water from the soil.",
+
+                topicTitle:
+                    "🦁 Animal Habitats",
+
+                topicText:
+                    "A habitat is the place where an animal lives. Forests, oceans, deserts and grasslands are different habitats.",
+
+                extraTitle:
+                    "🌍 Earth and Materials",
+
+                extraText:
+                    "Earth has land and water. Materials can have different properties such as being hard, soft, rough or smooth."
+
+            },
+
+
+            /* =========================
+               STANDARD 4
+            ========================= */
+
+            4: {
+
+                lessonTitle:
+                    "🌿 Plant Life Processes",
+
+                lessonText:
+                    "Plants use sunlight, water and carbon dioxide to make food. Roots absorb water and minerals while leaves help make food.",
+
+                topicTitle:
+                    "🦅 Animal Adaptations",
+
+                topicText:
+                    "Animals have adaptations that help them survive in their habitats. Examples include thick fur, sharp claws and special body shapes.",
+
+                extraTitle:
+                    "⚡ Energy and Matter",
+
+                extraText:
+                    "Energy can change from one form to another. Matter can exist as solids, liquids and gases."
+
+            },
+
+
+            /* =========================
+               STANDARD 5
+            ========================= */
+
+            5: {
+
+                lessonTitle:
+                    "🌳 Plant Systems",
+
+                lessonText:
+                    "Plants have systems that work together. Roots absorb water and minerals, stems transport materials, and leaves make food using sunlight.",
+
+                topicTitle:
+                    "🦁 Ecosystems and Food Chains",
+
+                topicText:
+                    "An ecosystem includes living and non-living things. Food chains show how energy moves from one organism to another.",
+
+                extraTitle:
+                    "🌍 Earth, Energy and Environment",
+
+                extraText:
+                    "Earth's systems are connected. Energy moves through ecosystems, and human activities can affect the environment."
+
+            }
+
+        };
+
+
+        /* =========================
+           LOAD CONTENT
+        ========================= */
+
+        const content =
+            scienceContent[standard];
+
+
+        document.getElementById(
+            "scienceStandard"
+        ).textContent =
+            "🎓 Standard " + standard;
+
+
+        document.getElementById(
+            "scienceLessonTitle"
+        ).textContent =
+            content.lessonTitle;
+
+
+        document.getElementById(
+            "scienceLessonText"
+        ).textContent =
+            content.lessonText;
+
+
+        document.getElementById(
+            "scienceTopicTitle"
+        ).textContent =
+            content.topicTitle;
+
+
+        document.getElementById(
+            "scienceTopicText"
+        ).textContent =
+            content.topicText;
+
+
+        document.getElementById(
+            "scienceExtraTitle"
+        ).textContent =
+            content.extraTitle;
+
+
+        document.getElementById(
+            "scienceExtraText"
+        ).textContent =
+            content.extraText;
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        function scienceLogout() {
+
+            localStorage.removeItem(
+                "studentName"
+            );
+
+            localStorage.removeItem(
+                "studentStandard"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

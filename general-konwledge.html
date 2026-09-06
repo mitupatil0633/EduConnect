@@ -1,0 +1,1338 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Fun GK - EduConnect</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        .gk-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px 60px;
+        }
+
+        .gk-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            .gk-header h1 {
+                color: #1e3a8a;
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+        .standard-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #dbeafe;
+            color: #1e3a8a;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .gk-card {
+            background: white;
+            padding: 28px;
+            margin: 22px 0;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+            .gk-card h2 {
+                color: #1e3a8a;
+                margin-top: 0;
+            }
+
+            .gk-card p {
+                line-height: 1.7;
+            }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .topic-box {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            font-weight: bold;
+        }
+
+        .fact-box {
+            background: #eff6ff;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 14px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .challenge-box {
+            background: #fefce8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        .quiz-box {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+            margin-top: 20px;
+        }
+
+        .quiz-progress {
+            color: #64748b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            color: #1e3a8a;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .gk-answer {
+            display: block !important;
+            width: 100% !important;
+            margin: 10px 0 !important;
+            padding: 13px 18px !important;
+            background: #2563eb !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 10px !important;
+            cursor: pointer !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            text-align: left !important;
+        }
+
+            .gk-answer:hover {
+                background: #1d4ed8 !important;
+            }
+
+            .gk-answer:disabled {
+                cursor: not-allowed !important;
+                opacity: 0.85;
+            }
+
+        .gk-result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            min-height: 28px;
+        }
+
+        .correct {
+            color: #16a34a;
+        }
+
+        .wrong {
+            color: #dc2626;
+        }
+
+        .next-button {
+            display: none;
+            margin-top: 20px;
+            padding: 13px 25px;
+            background: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .next-button:hover {
+                background: #15803d;
+            }
+
+        #gkScoreBox {
+            display: none;
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        #gkScore {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        #gkMessage {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .restart-button {
+            padding: 13px 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gk-header h1 {
+                font-size: 30px;
+            }
+
+            .quiz-question {
+                font-size: 19px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="#" onclick="logoutStudent()">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="gk-container">
+
+
+        <!-- HEADER -->
+
+        <section class="gk-header">
+
+            <h1>
+                🌍 Fun General Knowledge
+            </h1>
+
+            <p id="gkStandard"
+               class="standard-badge">
+                🎓 Loading Standard...
+            </p>
+
+            <p>
+                🚀 Explore amazing facts, discover new things
+                and challenge your brain!
+            </p>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="gk-card">
+
+            <h2 id="gkTitle">
+                🧠 Welcome to Fun GK!
+            </h2>
+
+            <p id="gkIntroduction">
+                Get ready to discover something new!
+            </p>
+
+        </section>
+
+
+        <!-- TOPICS -->
+
+        <section class="gk-card">
+
+            <h2>
+                🔎 Explore These Topics
+            </h2>
+
+            <div id="gkTopics"
+                 class="topic-grid">
+            </div>
+
+        </section>
+
+
+        <!-- FACTS -->
+
+        <section class="gk-card">
+
+            <h2>
+                🤯 Did You Know?
+            </h2>
+
+            <div id="gkFacts">
+            </div>
+
+        </section>
+
+
+        <!-- CHALLENGE -->
+
+        <section class="gk-card">
+
+            <h2>
+                ⚡ Brain Challenge
+            </h2>
+
+            <div class="challenge-box">
+
+                <p>
+                    Think carefully before choosing your answer!
+                </p>
+
+                <p>
+                    🎯 Answer all 5 questions.
+                </p>
+
+                <p>
+                    🏆 Can you become a GK Champion?
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section class="gk-card">
+
+            <h2>
+                🧠 GK Challenge Quiz
+            </h2>
+
+            <div class="quiz-box">
+
+                <p id="gkProgress"
+                   class="quiz-progress">
+                    Question 1 of 5
+                </p>
+
+                <h3 id="gkQuestion"
+                    class="quiz-question">
+                    Loading question...
+                </h3>
+
+                <div id="gkAnswers">
+                </div>
+
+                <p id="gkResult"
+                   class="gk-result">
+                </p>
+
+                <button id="gkNext"
+                        class="next-button"
+                        onclick="nextGKQuestion()">
+
+                    Next Question →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCORE -->
+
+        <section id="gkScoreBox">
+
+            <h2>
+                🎉 Your GK Result
+            </h2>
+
+            <p id="gkScore">
+                0 / 5
+            </p>
+
+            <p id="gkMessage">
+                Complete the challenge to see your result!
+            </p>
+
+            <button class="restart-button"
+                    onclick="restartGKQuiz()">
+
+                🔄 Try Again
+
+            </button>
+
+        </section>
+
+
+        <!-- BACK -->
+
+        <a href="subjects.html"
+           class="back-button">
+
+            ← Back to Subjects
+
+        </a>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <!-- GK SCRIPT -->
+
+    <script>
+
+        /* =========================
+           STUDENT STANDARD
+        ========================= */
+
+        const gkStudentStandard =
+            Number(
+                localStorage.getItem("studentStandard")
+            ) || 1;
+
+
+        document.getElementById(
+            "gkStandard"
+        ).textContent =
+            "🎓 Standard " + gkStudentStandard;
+
+
+        /* =========================
+           GK DATA
+        ========================= */
+
+        const gkQuestionsByStandard = {
+
+            1: [
+
+                {
+                    question: "Which animal has a long trunk?",
+                    options: [
+                        "Elephant",
+                        "Rabbit",
+                        "Cat",
+                        "Dog"
+                    ],
+                    answer: "Elephant"
+                },
+
+                {
+                    question: "What do plants need to grow?",
+                    options: [
+                        "Water",
+                        "Toys",
+                        "Shoes",
+                        "Books"
+                    ],
+                    answer: "Water"
+                },
+
+                {
+                    question: "Which one is a fruit?",
+                    options: [
+                        "Apple",
+                        "Chair",
+                        "Pencil",
+                        "Table"
+                    ],
+                    answer: "Apple"
+                },
+
+                {
+                    question: "What gives us light during the day?",
+                    options: [
+                        "Sun",
+                        "Table",
+                        "Book",
+                        "Chair"
+                    ],
+                    answer: "Sun"
+                },
+
+                {
+                    question: "Which animal says meow?",
+                    options: [
+                        "Cat",
+                        "Cow",
+                        "Horse",
+                        "Elephant"
+                    ],
+                    answer: "Cat"
+                }
+
+            ],
+
+
+            2: [
+
+                {
+                    question: "How many days are in one week?",
+                    options: [
+                        "7",
+                        "5",
+                        "9",
+                        "10"
+                    ],
+                    answer: "7"
+                },
+
+                {
+                    question: "What is the Sun?",
+                    options: [
+                        "A star",
+                        "A planet",
+                        "A moon",
+                        "A cloud"
+                    ],
+                    answer: "A star"
+                },
+
+                {
+                    question: "What falls from clouds during rain?",
+                    options: [
+                        "Water",
+                        "Sand",
+                        "Stones",
+                        "Leaves"
+                    ],
+                    answer: "Water"
+                },
+
+                {
+                    question: "Which animal has a trunk?",
+                    options: [
+                        "Elephant",
+                        "Lion",
+                        "Rabbit",
+                        "Dog"
+                    ],
+                    answer: "Elephant"
+                },
+
+                {
+                    question: "Where do fish usually live?",
+                    options: [
+                        "Water",
+                        "Trees",
+                        "Deserts",
+                        "Mountains"
+                    ],
+                    answer: "Water"
+                }
+
+            ],
+
+
+            3: [
+
+                {
+                    question: "Which ocean is the largest?",
+                    options: [
+                        "Pacific Ocean",
+                        "Indian Ocean",
+                        "Arctic Ocean",
+                        "Atlantic Ocean"
+                    ],
+                    answer: "Pacific Ocean"
+                },
+
+                {
+                    question: "Which planet is called the Red Planet?",
+                    options: [
+                        "Mars",
+                        "Venus",
+                        "Earth",
+                        "Jupiter"
+                    ],
+                    answer: "Mars"
+                },
+
+                {
+                    question: "Which organ helps us breathe?",
+                    options: [
+                        "Lungs",
+                        "Stomach",
+                        "Heart",
+                        "Brain"
+                    ],
+                    answer: "Lungs"
+                },
+
+                {
+                    question: "What is the capital of India?",
+                    options: [
+                        "New Delhi",
+                        "Mumbai",
+                        "Chennai",
+                        "Kolkata"
+                    ],
+                    answer: "New Delhi"
+                },
+
+                {
+                    question: "What do green plants use to make food?",
+                    options: [
+                        "Sunlight",
+                        "Plastic",
+                        "Glass",
+                        "Metal"
+                    ],
+                    answer: "Sunlight"
+                }
+
+            ],
+
+
+            4: [
+
+                {
+                    question: "Which is the largest continent?",
+                    options: [
+                        "Asia",
+                        "Africa",
+                        "Europe",
+                        "Australia"
+                    ],
+                    answer: "Asia"
+                },
+
+                {
+                    question: "Which planet is famous for its rings?",
+                    options: [
+                        "Saturn",
+                        "Mercury",
+                        "Earth",
+                        "Mars"
+                    ],
+                    answer: "Saturn"
+                },
+
+                {
+                    question: "Which is the fastest land animal?",
+                    options: [
+                        "Cheetah",
+                        "Elephant",
+                        "Horse",
+                        "Tiger"
+                    ],
+                    answer: "Cheetah"
+                },
+
+                {
+                    question: "Which instrument measures temperature?",
+                    options: [
+                        "Thermometer",
+                        "Compass",
+                        "Ruler",
+                        "Clock"
+                    ],
+                    answer: "Thermometer"
+                },
+
+                {
+                    question: "Which ocean is between Africa and Australia?",
+                    options: [
+                        "Indian Ocean",
+                        "Atlantic Ocean",
+                        "Arctic Ocean",
+                        "Pacific Ocean"
+                    ],
+                    answer: "Indian Ocean"
+                }
+
+            ],
+
+
+            5: [
+
+                {
+                    question: "Which planet is closest to the Sun?",
+                    options: [
+                        "Mercury",
+                        "Venus",
+                        "Earth",
+                        "Mars"
+                    ],
+                    answer: "Mercury"
+                },
+
+                {
+                    question: "What process allows green plants to make food?",
+                    options: [
+                        "Photosynthesis",
+                        "Evaporation",
+                        "Digestion",
+                        "Respiration"
+                    ],
+                    answer: "Photosynthesis"
+                },
+
+                {
+                    question: "What is Earth's natural satellite?",
+                    options: [
+                        "The Moon",
+                        "Mars",
+                        "The Sun",
+                        "Venus"
+                    ],
+                    answer: "The Moon"
+                },
+
+                {
+                    question: "What helps protect Earth from much ultraviolet radiation?",
+                    options: [
+                        "Ozone layer",
+                        "Rock layer",
+                        "Ocean layer",
+                        "Cloud layer"
+                    ],
+                    answer: "Ozone layer"
+                },
+
+                {
+                    question: "Which is the largest ocean?",
+                    options: [
+                        "Pacific Ocean",
+                        "Indian Ocean",
+                        "Arctic Ocean",
+                        "Atlantic Ocean"
+                    ],
+                    answer: "Pacific Ocean"
+                }
+
+            ]
+
+        };
+
+
+        /* =========================
+           GK CONTENT
+        ========================= */
+
+        const gkContent = {
+
+            1: {
+                title: "🌟 My Amazing World",
+                introduction:
+                    "Discover animals, food, nature, space and the fun things we see every day.",
+                topics: [
+                    "🐶 Amazing Animals",
+                    "🌱 Plants and Nature",
+                    "☀️ Sun and Sky",
+                    "🍎 Food Around Us",
+                    "🏠 Everyday Things"
+                ],
+                facts: [
+                    "🐘 Elephants have very large ears.",
+                    "🌱 Plants need water and sunlight to grow.",
+                    "☀️ The Sun gives Earth light and heat.",
+                    "🍎 Apples are fruits.",
+                    "🌙 We can see the Moon in the night sky."
+                ]
+            },
+
+            2: {
+                title: "🌍 Explorer's World",
+                introduction:
+                    "Explore continents, weather, animals, space and interesting facts about Earth.",
+                topics: [
+                    "🌎 Continents",
+                    "🌦️ Weather",
+                    "🐘 Animal World",
+                    "🚀 Space",
+                    "🌊 Oceans"
+                ],
+                facts: [
+                    "🌎 Earth has seven continents.",
+                    "☀️ The Sun is a star.",
+                    "🐘 Elephants use their trunks to pick up food and water.",
+                    "🌧️ Rain comes from clouds.",
+                    "🌊 Oceans contain salt water."
+                ]
+            },
+
+            3: {
+                title: "🗺️ World Explorer",
+                introduction:
+                    "Travel around the world through facts about countries, science, nature, space and history.",
+                topics: [
+                    "🗺️ Countries",
+                    "🪐 Space",
+                    "🧪 Science",
+                    "🌳 Nature",
+                    "🏛️ History"
+                ],
+                facts: [
+                    "🌊 The Pacific Ocean is the largest ocean.",
+                    "🔴 Mars is often called the Red Planet.",
+                    "🫁 Humans have lungs that help us breathe.",
+                    "🌱 Green plants can make their own food.",
+                    "🇮🇳 New Delhi is the capital of India."
+                ]
+            },
+
+            4: {
+                title: "🌎 World Explorer Challenge",
+                introduction:
+                    "Test your knowledge of geography, science, inventions, space and the natural world.",
+                topics: [
+                    "🌎 World Geography",
+                    "🪐 Solar System",
+                    "💡 Inventions",
+                    "🌿 Environment",
+                    "🏺 History"
+                ],
+                facts: [
+                    "🌏 Asia is the largest continent.",
+                    "🪐 Saturn is famous for its rings.",
+                    "🐆 The cheetah is the fastest land animal.",
+                    "🌡️ A thermometer measures temperature.",
+                    "🌊 The Indian Ocean is one of Earth's major oceans."
+                ]
+            },
+
+            5: {
+                title: "🚀 Ultimate GK Challenge",
+                introduction:
+                    "Explore science, technology, geography, history, Earth and fascinating world knowledge.",
+                topics: [
+                    "🌐 World Knowledge",
+                    "🔬 Science",
+                    "💻 Technology",
+                    "🌍 Earth and Environment",
+                    "🏛️ History"
+                ],
+                facts: [
+                    "🪐 Mercury is the closest planet to the Sun.",
+                    "🌱 Photosynthesis allows green plants to make food.",
+                    "🌍 Earth has one natural satellite, the Moon.",
+                    "🛡️ The ozone layer helps protect Earth from ultraviolet radiation.",
+                    "🌊 The Pacific Ocean is the largest ocean on Earth."
+                ]
+            }
+
+        };
+
+
+        /* =========================
+           SELECT CONTENT
+        ========================= */
+
+        const selectedGKContent =
+            gkContent[gkStudentStandard];
+
+        const selectedGKQuestions =
+            gkQuestionsByStandard[gkStudentStandard];
+
+
+        document.getElementById(
+            "gkTitle"
+        ).textContent =
+            selectedGKContent.title;
+
+
+        document.getElementById(
+            "gkIntroduction"
+        ).textContent =
+            selectedGKContent.introduction;
+
+
+        /* =========================
+           TOPICS
+        ========================= */
+
+        const topicContainer =
+            document.getElementById("gkTopics");
+
+
+        selectedGKContent.topics.forEach(
+            function (topic) {
+
+                const box =
+                    document.createElement("div");
+
+                box.className =
+                    "topic-box";
+
+                box.textContent =
+                    topic;
+
+                topicContainer.appendChild(box);
+
+            }
+        );
+
+
+        /* =========================
+           FACTS
+        ========================= */
+
+        const factContainer =
+            document.getElementById("gkFacts");
+
+
+        selectedGKContent.facts.forEach(
+            function (fact) {
+
+                const box =
+                    document.createElement("div");
+
+                box.className =
+                    "fact-box";
+
+                box.textContent =
+                    fact;
+
+                factContainer.appendChild(box);
+
+            }
+        );
+
+
+        /* =========================
+           QUIZ VARIABLES
+        ========================= */
+
+        let currentGKQuestion = 0;
+
+        let gkScoreValue = 0;
+
+        let gkAnswered = false;
+
+
+        /* =========================
+           SHOW QUESTION
+        ========================= */
+
+        function showGKQuestion() {
+
+            const question =
+                selectedGKQuestions[
+                currentGKQuestion
+                ];
+
+
+            document.getElementById(
+                "gkProgress"
+            ).textContent =
+                "Question " +
+                (currentGKQuestion + 1) +
+                " of 5";
+
+
+            document.getElementById(
+                "gkQuestion"
+            ).textContent =
+                question.question;
+
+
+            const answersContainer =
+                document.getElementById(
+                    "gkAnswers"
+                );
+
+
+            answersContainer.innerHTML =
+                "";
+
+
+            document.getElementById(
+                "gkResult"
+            ).textContent =
+                "";
+
+
+            document.getElementById(
+                "gkResult"
+            ).className =
+                "gk-result";
+
+
+            const nextButton =
+                document.getElementById(
+                    "gkNext"
+                );
+
+
+            nextButton.style.display =
+                "none";
+
+
+            gkAnswered =
+                false;
+
+
+            question.options.forEach(
+                function (option) {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.className =
+                        "gk-answer";
+
+
+                    button.type =
+                        "button";
+
+
+                    button.textContent =
+                        option;
+
+
+                    button.onclick =
+                        function () {
+
+                            checkGKAnswer(
+                                option,
+                                button
+                            );
+
+                        };
+
+
+                    answersContainer.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           CHECK ANSWER
+        ========================= */
+
+        function checkGKAnswer(
+            selectedAnswer,
+            selectedButton
+        ) {
+
+            if (gkAnswered) {
+                return;
+            }
+
+
+            gkAnswered =
+                true;
+
+
+            const question =
+                selectedGKQuestions[
+                currentGKQuestion
+                ];
+
+
+            const buttons =
+                document.querySelectorAll(
+                    "#gkAnswers button"
+                );
+
+
+            buttons.forEach(
+                function (button) {
+
+                    button.disabled =
+                        true;
+
+                }
+            );
+
+
+            const result =
+                document.getElementById(
+                    "gkResult"
+                );
+
+
+            if (
+                selectedAnswer ===
+                question.answer
+            ) {
+
+                gkScoreValue++;
+
+
+                selectedButton.textContent =
+                    "✅ Correct!";
+
+
+                result.textContent =
+                    "🎉 Your answer is correct! Great job!";
+
+
+                result.className =
+                    "gk-result correct";
+
+            }
+            else {
+
+                selectedButton.textContent =
+                    "❌ Wrong Answer";
+
+
+                result.textContent =
+                    "💡 Good try! The correct answer is: " +
+                    question.answer;
+
+
+                result.className =
+                    "gk-result wrong";
+
+            }
+
+
+            const nextButton =
+                document.getElementById(
+                    "gkNext"
+                );
+
+
+            nextButton.style.display =
+                "inline-block";
+
+
+            if (
+                currentGKQuestion ===
+                selectedGKQuestions.length - 1
+            ) {
+
+                nextButton.textContent =
+                    "🏆 See My Final Score";
+
+            }
+
+        }
+
+
+        /* =========================
+           NEXT QUESTION
+        ========================= */
+
+        function nextGKQuestion() {
+
+            currentGKQuestion++;
+
+
+            if (
+                currentGKQuestion <
+                selectedGKQuestions.length
+            ) {
+
+                showGKQuestion();
+
+            }
+            else {
+
+                finishGKQuiz();
+
+            }
+
+        }
+
+
+        /* =========================
+           FINISH QUIZ
+        ========================= */
+
+        function finishGKQuiz() {
+
+            localStorage.setItem(
+                "gkScore",
+                gkScoreValue
+            );
+
+
+            document.getElementById(
+                "gkScore"
+            ).textContent =
+                gkScoreValue + " / 5";
+
+
+            const message =
+                document.getElementById(
+                    "gkMessage"
+                );
+
+
+            if (
+                gkScoreValue === 5
+            ) {
+
+                message.textContent =
+                    "🏆 GK Champion! Perfect score!";
+
+            }
+            else if (
+                gkScoreValue === 4
+            ) {
+
+                message.textContent =
+                    "🌟 Amazing! You are almost a GK Champion!";
+
+            }
+            else if (
+                gkScoreValue === 3
+            ) {
+
+                message.textContent =
+                    "🎉 Great job! Keep exploring!";
+
+            }
+            else if (
+                gkScoreValue >= 1
+            ) {
+
+                message.textContent =
+                    "💪 Nice try! Learn a little more and try again!";
+
+            }
+            else {
+
+                message.textContent =
+                    "🚀 Keep learning! Try the challenge again!";
+
+            }
+
+
+            document.getElementById(
+                "gkScoreBox"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "gkScoreBox"
+            ).scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =========================
+           RESTART QUIZ
+        ========================= */
+
+        function restartGKQuiz() {
+
+            currentGKQuestion = 0;
+
+            gkScoreValue = 0;
+
+            gkAnswered = false;
+
+
+            document.getElementById(
+                "gkScoreBox"
+            ).style.display =
+                "none";
+
+
+            showGKQuestion();
+
+
+            document.querySelector(
+                ".quiz-box"
+            ).scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =========================
+           START
+        ========================= */
+
+        showGKQuestion();
+
+    </script>
+
+
+</body>
+
+</html>

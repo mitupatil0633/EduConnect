@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Subjects - EduConnect</title>
+
+    <!-- =========================
+         LOGIN PROTECTION
+    ========================= -->
+
+    <script>
+
+        const studentName =
+            localStorage.getItem("studentName");
+
+        const studentStandard =
+            localStorage.getItem("studentStandard");
+
+        if (!studentName || !studentStandard) {
+
+            window.location.replace("login.html");
+
+        }
+
+    </script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: linear-gradient( 135deg, #eef2ff, #f0f9ff, #fdf4ff );
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: linear-gradient( 90deg, #1e3a8a, #4f46e5, #7c3aed );
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .navbar nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+            .navbar nav a {
+                color: white;
+                text-decoration: none;
+                padding: 9px 14px;
+                border-radius: 9px;
+                font-weight: bold;
+                transition: 0.2s;
+            }
+
+                .navbar nav a:hover {
+                    background: rgba(255,255,255,0.18);
+                }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .subjects-page {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px 60px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .subjects-header {
+            text-align: center;
+            background: linear-gradient( 135deg, #ffffff, #eef2ff );
+            border: 2px solid #e0e7ff;
+            border-radius: 25px;
+            padding: 42px 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(79,70,229,0.13);
+        }
+
+        .welcome {
+            color: #2563eb;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0 0 8px;
+        }
+
+        .subjects-header h1 {
+            color: #3730a3;
+            font-size: 40px;
+            margin: 8px 0 12px;
+        }
+
+        .subjects-header p {
+            color: #64748b;
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .standard-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 20px;
+            border-radius: 30px;
+            background: linear-gradient( 90deg, #2563eb, #7c3aed );
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(79,70,229,0.22);
+        }
+
+
+        /* =========================
+           SUBJECT GRID
+        ========================= */
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+
+        /* =========================
+           SUBJECT CARD
+        ========================= */
+
+        .subject-card {
+            position: relative;
+            background: white;
+            border-radius: 22px;
+            padding: 32px 25px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+            .subject-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 15px 32px rgba(0,0,0,0.13);
+            }
+
+
+            /* =========================
+           DIFFERENT CARD COLORS
+        ========================= */
+
+            .subject-card:nth-child(1) {
+                border-color: #bfdbfe;
+                background: linear-gradient( 135deg, #ffffff, #eff6ff );
+            }
+
+            .subject-card:nth-child(2) {
+                border-color: #c4b5fd;
+                background: linear-gradient( 135deg, #ffffff, #f5f3ff );
+            }
+
+            .subject-card:nth-child(3) {
+                border-color: #bbf7d0;
+                background: linear-gradient( 135deg, #ffffff, #f0fdf4 );
+            }
+
+            .subject-card:nth-child(4) {
+                border-color: #bae6fd;
+                background: linear-gradient( 135deg, #ffffff, #f0f9ff );
+            }
+
+            .subject-card:nth-child(5) {
+                border-color: #fed7aa;
+                background: linear-gradient( 135deg, #ffffff, #fff7ed );
+            }
+
+            .subject-card:nth-child(6) {
+                border-color: #fbcfe8;
+                background: linear-gradient( 135deg, #ffffff, #fdf2f8 );
+            }
+
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .subject-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 45px;
+            background: white;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+        }
+
+
+        /* =========================
+           TEXT
+        ========================= */
+
+        .subject-card h2 {
+            color: #3730a3;
+            font-size: 27px;
+            margin: 10px 0 12px;
+        }
+
+        .subject-card p {
+            color: #64748b;
+            line-height: 1.6;
+            min-height: 52px;
+            margin: 0 auto 8px;
+            max-width: 430px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .subject-card button {
+            margin-top: 18px;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 11px;
+            background: linear-gradient( 90deg, #2563eb, #7c3aed );
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 14px rgba(37,99,235,0.20);
+            transition: 0.25s;
+        }
+
+            .subject-card button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 18px rgba(37,99,235,0.30);
+            }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            background: linear-gradient( 90deg, #1e3a8a, #4f46e5, #7c3aed );
+            color: white;
+            padding: 28px;
+            margin-top: 20px;
+        }
+
+            footer h3 {
+                margin: 5px;
+            }
+
+            footer p {
+                margin: 7px;
+            }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+                .navbar nav {
+                    justify-content: center;
+                }
+
+            .subjects-page {
+                padding: 25px 15px 45px;
+            }
+
+            .subjects-header {
+                padding: 32px 18px;
+            }
+
+                .subjects-header h1 {
+                    font-size: 31px;
+                }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subject-card {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="progress.html">
+                Progress
+            </a>
+
+            <a href="activities.html">
+                Activities
+            </a>
+
+            <a href="#" onclick="logoutStudent(); return false;">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         SUBJECTS
+    ========================= -->
+
+    <main class="subjects-page">
+
+
+        <!-- HEADER -->
+
+        <section class="subjects-header">
+
+            <p class="welcome">
+                MY LEARNING
+            </p>
+
+            <h1 id="subjectsTitle">
+                📚 My Subjects
+            </h1>
+
+            <p id="subjectsInfo">
+                Choose a subject and start learning!
+            </p>
+
+            <div class="standard-badge">
+
+                🎓
+                <span id="standardDisplay">
+                    Standard
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SUBJECT GRID
+        ========================= -->
+
+        <div class="subjects-grid">
+
+
+            <!-- MATHEMATICS -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🔢
+                </div>
+
+                <h2>
+                    Mathematics
+                </h2>
+
+                <p id="mathDescription">
+                    Numbers and basic mathematics.
+                </p>
+
+                <button onclick="openMath()">
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- ENGLISH -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    📖
+                </div>
+
+                <h2 id="englishTitle">
+                    English
+                </h2>
+
+                <p id="englishDescription">
+                    Reading and writing.
+                </p>
+
+                <button onclick="startSubject('English')">
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- SCIENCE -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🔬
+                </div>
+
+                <h2 id="scienceTitle">
+                    Science
+                </h2>
+
+                <p id="scienceDescription">
+                    Explore the world around you.
+                </p>
+
+                <button onclick="startSubject('Science')">
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- COMPUTER -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    💻
+                </div>
+
+                <h2 id="computerTitle">
+                    Computer
+                </h2>
+
+                <p id="computerDescription">
+                    Learn basic computer skills.
+                </p>
+
+                <button onclick="startSubject('Computer')">
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- GENERAL KNOWLEDGE -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🌍
+                </div>
+
+                <h2>
+                    General Knowledge
+                </h2>
+
+                <p>
+                    Discover interesting facts
+                    about the world around you.
+                </p>
+
+                <button type="button"
+                        onclick="window.location.href='general-knowledge.html'">
+
+                    Start Learning →
+
+                </button>
+
+            </div>
+
+
+            <!-- FUN ACTIVITIES -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🎮
+                </div>
+
+                <h2>
+                    Fun Activities
+                </h2>
+
+                <p>
+                    Learn with puzzles, games,
+                    quizzes and challenges.
+                </p>
+
+                <button onclick="startSubject('Fun Activities')">
+
+                    Play Now →
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         MAIN JAVASCRIPT
+    ========================= -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

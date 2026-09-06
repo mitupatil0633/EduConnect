@@ -1,0 +1,833 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Computer Parts - EduConnect</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                padding: 9px 14px;
+                border-radius: 8px;
+                font-weight: bold;
+            }
+
+                .nav-links a:hover {
+                    background: rgba(255,255,255,0.15);
+                }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 20px 60px;
+        }
+
+        .header {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+            .header h1 {
+                color: #1e3a8a;
+                font-size: 36px;
+                margin: 10px 0;
+            }
+
+            .header p {
+                color: #666;
+                font-size: 18px;
+            }
+
+        .standard-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e3a8a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .lesson {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
+        }
+
+            .lesson h2 {
+                color: #1e3a8a;
+                margin-top: 0;
+            }
+
+            .lesson p {
+                line-height: 1.7;
+                color: #555;
+            }
+
+        .parts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .part-card {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 22px;
+            border: 1px solid #e5e7eb;
+        }
+
+            .part-card h3 {
+                color: #1e3a8a;
+                margin-top: 0;
+            }
+
+            .part-card p {
+                margin-bottom: 0;
+            }
+
+        .tips {
+            background: #eff6ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+            .tips li {
+                margin: 9px 0;
+            }
+
+        /* QUIZ */
+
+        .quiz {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
+        }
+
+            .quiz h2 {
+                color: #1e3a8a;
+            }
+
+        #computerQuestion {
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        #computerQuizQuestion {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        .answer-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+            .answer-buttons button {
+                min-width: 200px;
+                padding: 14px 20px;
+                border: none;
+                border-radius: 10px;
+                background: #2563eb;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                white-space: normal;
+            }
+
+                .answer-buttons button:hover {
+                    background: #1d4ed8;
+                }
+
+                .answer-buttons button:disabled {
+                    opacity: 0.65;
+                    cursor: not-allowed;
+                }
+
+        #computerPartsResult {
+            min-height: 28px;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #nextComputerQuestion,
+        #restartComputerQuiz {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #16a34a;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            #nextComputerQuestion:hover,
+            #restartComputerQuiz:hover {
+                background: #15803d;
+            }
+
+        #restartComputerQuiz {
+            background: #2563eb;
+            display: none;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .parts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 29px;
+            }
+
+            .answer-buttons button {
+                width: 100%;
+                min-width: 0;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <div class="nav-links">
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="computer.html">
+                Computer
+            </a>
+
+            <a href="progress.html">
+                Progress
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <section class="header">
+
+            <div id="standardBadge"
+                 class="standard-badge">
+
+                Standard
+
+            </div>
+
+            <h1>
+                🖥️ Computer Parts
+            </h1>
+
+            <p id="pageIntro">
+                Learn about important parts of a computer.
+            </p>
+
+        </section>
+
+
+        <!-- STANDARD LESSON -->
+
+        <section class="lesson">
+
+            <h2 id="lessonTitle">
+                Computer Basics
+            </h2>
+
+            <p id="lessonText">
+                Learn about the main parts of a computer
+                and what each part does.
+            </p>
+
+
+            <div class="parts-grid">
+
+
+                <div class="part-card">
+
+                    <h3>
+                        🖥️ Monitor
+                    </h3>
+
+                    <p id="monitorText">
+                        The monitor displays text,
+                        pictures and videos.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <h3>
+                        ⌨️ Keyboard
+                    </h3>
+
+                    <p id="keyboardText">
+                        The keyboard lets us type
+                        letters and numbers.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <h3>
+                        🖱️ Mouse
+                    </h3>
+
+                    <p id="mouseText">
+                        The mouse helps us move the
+                        pointer and select items.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <h3>
+                        💻 Computer
+                    </h3>
+
+                    <p id="computerText">
+                        A computer processes information
+                        and performs tasks.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="tips">
+
+                <strong>
+                    💡 Remember:
+                </strong>
+
+                <ul id="tipsList">
+
+                    <li>
+                        The monitor shows information.
+                    </li>
+
+                    <li>
+                        The keyboard is used for typing.
+                    </li>
+
+                    <li>
+                        The mouse controls the pointer.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section class="quiz">
+
+            <h2>
+                🧠 Computer Parts Quiz
+            </h2>
+
+            <p id="computerQuestion">
+                Question 1 of 4
+            </p>
+
+            <div id="computerQuizQuestion">
+                Loading question...
+            </div>
+
+
+            <div class="answer-buttons">
+
+                <button type="button"
+                        onclick="selectComputerAnswer(0)">
+                    Answer 1
+                </button>
+
+                <button type="button"
+                        onclick="selectComputerAnswer(1)">
+                    Answer 2
+                </button>
+
+                <button type="button"
+                        onclick="selectComputerAnswer(2)">
+                    Answer 3
+                </button>
+
+                <button type="button"
+                        onclick="selectComputerAnswer(3)">
+                    Answer 4
+                </button>
+
+            </div>
+
+
+            <div id="computerPartsResult">
+            </div>
+
+
+            <button id="nextComputerQuestion"
+                    type="button"
+                    onclick="nextComputerQuestion()"
+                    style="display:none;">
+
+                Next Question →
+
+            </button>
+
+
+            <button id="restartComputerQuiz"
+                    type="button"
+                    onclick="restartComputerQuiz()">
+
+                🔄 Try Again
+
+            </button>
+
+        </section>
+
+
+        <a href="computer.html"
+           class="back-button">
+
+            ← Back to Computer
+
+        </a>
+
+
+    </main>
+
+
+    <!-- COMPUTER JS -->
+
+    <script src="computer.js"></script>
+
+
+    <!-- STANDARD-SPECIFIC CONTENT -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const standard =
+                    localStorage.getItem(
+                        "studentStandard"
+                    ) || "1";
+
+
+                const badge =
+                    document.getElementById(
+                        "standardBadge"
+                    );
+
+
+                const intro =
+                    document.getElementById(
+                        "pageIntro"
+                    );
+
+
+                const title =
+                    document.getElementById(
+                        "lessonTitle"
+                    );
+
+
+                const text =
+                    document.getElementById(
+                        "lessonText"
+                    );
+
+
+                const monitor =
+                    document.getElementById(
+                        "monitorText"
+                    );
+
+
+                const keyboard =
+                    document.getElementById(
+                        "keyboardText"
+                    );
+
+
+                const mouse =
+                    document.getElementById(
+                        "mouseText"
+                    );
+
+
+                const computer =
+                    document.getElementById(
+                        "computerText"
+                    );
+
+
+                const tips =
+                    document.getElementById(
+                        "tipsList"
+                    );
+
+
+                const lessons = {
+
+                    "1": {
+
+                        intro:
+                            "Learn the basic parts of a computer.",
+
+                        title:
+                            "🌟 Standard 1: Computer Basics",
+
+                        text:
+                            "A computer has different parts that help us learn, work and play. We can identify the monitor, keyboard, mouse and computer.",
+
+                        monitor:
+                            "The monitor is like a screen. It shows words, pictures and videos.",
+
+                        keyboard:
+                            "The keyboard has keys that we press to type letters and numbers.",
+
+                        mouse:
+                            "The mouse helps us move the pointer and click things.",
+
+                        computer:
+                            "The computer processes information and helps us perform tasks.",
+
+                        tips: [
+
+                            "🖥️ Monitor = shows information",
+
+                            "⌨️ Keyboard = typing",
+
+                            "🖱️ Mouse = pointing and clicking",
+
+                            "💻 Computer = processes information"
+
+                        ]
+
+                    },
+
+
+                    "2": {
+
+                        intro:
+                            "Learn how computer parts help us operate a computer.",
+
+                        title:
+                            "⌨️ Standard 2: Using Computer Parts",
+
+                        text:
+                            "Computer parts work together. The keyboard and mouse are input devices, while the monitor gives us visual output.",
+
+                        monitor:
+                            "The monitor displays the results of what we do on the computer.",
+
+                        keyboard:
+                            "The keyboard is an input device used to type commands, words and numbers.",
+
+                        mouse:
+                            "The mouse is an input device used for pointing, clicking and selecting.",
+
+                        computer:
+                            "The computer receives input, processes it and produces useful output.",
+
+                        tips: [
+
+                            "⌨️ Keyboard = input",
+
+                            "🖱️ Mouse = input",
+
+                            "🖥️ Monitor = output",
+
+                            "💻 Computer = processes information"
+
+                        ]
+
+                    },
+
+
+                    "3": {
+
+                        intro:
+                            "Learn how computer hardware works with digital information.",
+
+                        title:
+                            "📁 Standard 3: Computer Hardware",
+
+                        text:
+                            "Computer hardware means the physical parts of a computer. Different hardware components work together to help us use software and information.",
+
+                        monitor:
+                            "The monitor is an output device that presents visual information.",
+
+                        keyboard:
+                            "The keyboard sends typed information to the computer.",
+
+                        mouse:
+                            "The mouse sends pointing and selection actions to the computer.",
+
+                        computer:
+                            "The computer uses hardware components to process and store information.",
+
+                        tips: [
+
+                            "Hardware means physical computer parts.",
+
+                            "Input devices send information to the computer.",
+
+                            "Output devices show information.",
+
+                            "Different hardware parts work together."
+
+                        ]
+
+                    },
+
+
+                    "4": {
+
+                        intro:
+                            "Explore how computer hardware supports applications and coding.",
+
+                        title:
+                            "💻 Standard 4: Hardware and Applications",
+
+                        text:
+                            "Applications and programs depend on computer hardware. Input devices allow users to interact with programs, while output devices show results.",
+
+                        monitor:
+                            "The monitor displays application windows, graphics, text and program results.",
+
+                        keyboard:
+                            "The keyboard is useful for entering commands, writing code and typing information.",
+
+                        mouse:
+                            "The mouse helps users interact with buttons, menus and application interfaces.",
+
+                        computer:
+                            "The computer processes instructions from programs and produces results.",
+
+                        tips: [
+
+                            "Programs run using computer hardware.",
+
+                            "Keyboard input can be used for coding.",
+
+                            "Mouse actions help control applications.",
+
+                            "The processor handles instructions."
+
+                        ]
+
+                    },
+
+
+                    "5": {
+
+                        intro:
+                            "Understand computer hardware and how it supports programming.",
+
+                        title:
+                            "🌐 Standard 5: Hardware and Programming",
+
+                        text:
+                            "Programming gives instructions to a computer. Hardware components allow users to enter instructions, see results and process information.",
+
+                        monitor:
+                            "The monitor displays program output, webpages, graphics and other information.",
+
+                        keyboard:
+                            "The keyboard is commonly used to write code, commands and other text.",
+
+                        mouse:
+                            "The mouse helps users interact with programming tools, editors and applications.",
+
+                        computer:
+                            "The computer processes program instructions and produces the required output.",
+
+                        tips: [
+
+                            "Programming means giving instructions to a computer.",
+
+                            "The keyboard can be used to write code.",
+
+                            "The monitor can display program output.",
+
+                            "Computer hardware works together to run programs."
+
+                        ]
+
+                    }
+
+                };
+
+
+                const data =
+                    lessons[standard] ||
+                    lessons["1"];
+
+
+                badge.textContent =
+                    "Standard " + standard;
+
+
+                intro.textContent =
+                    data.intro;
+
+
+                title.textContent =
+                    data.title;
+
+
+                text.textContent =
+                    data.text;
+
+
+                monitor.textContent =
+                    data.monitor;
+
+
+                keyboard.textContent =
+                    data.keyboard;
+
+
+                mouse.textContent =
+                    data.mouse;
+
+
+                computer.textContent =
+                    data.computer;
+
+
+                tips.innerHTML = "";
+
+
+                data.tips.forEach(
+                    function (tip) {
+
+                        const li =
+                            document.createElement("li");
+
+                        li.textContent =
+                            tip;
+
+                        tips.appendChild(li);
+
+                    }
+                );
+
+            }
+
+        );
+
+    </script>
+
+
+</body>
+
+</html>

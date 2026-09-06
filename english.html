@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>English - EduConnect</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        /* =====================================
+           ENGLISH PAGE
+           SUBJECTS COLOR THEME ONLY
+        ===================================== */
+
+        body {
+            background: linear-gradient( 135deg, #eef2ff, #f0f9ff, #fdf4ff );
+        }
+
+
+        /* =========================
+           NAVBAR COLORS
+        ========================= */
+
+        .navbar {
+            background: linear-gradient( 90deg, #1e3a8a, #4f46e5, #7c3aed );
+            color: white;
+        }
+
+            .navbar .logo {
+                color: white;
+            }
+
+            .navbar nav a {
+                color: white;
+            }
+
+                .navbar nav a:hover {
+                    background: rgba(255,255,255,0.18);
+                }
+
+
+        /* =========================
+           ENGLISH HEADER COLORS
+        ========================= */
+
+        .math-header {
+            background: linear-gradient( 135deg, #ffffff, #eef2ff );
+            border: 2px solid #e0e7ff;
+            color: #3730a3;
+            box-shadow: 0 10px 30px rgba(79,70,229,0.13);
+        }
+
+            .math-header .welcome {
+                color: #2563eb;
+            }
+
+            .math-header h1 {
+                color: #3730a3;
+            }
+
+        #englishStandard {
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        .english-description {
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        .math-header p {
+            color: #64748b;
+        }
+
+
+        /* =========================
+           ENGLISH TOPIC CARDS
+        ========================= */
+
+        .english-topics .lesson-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+
+            /* Reading */
+
+            .english-topics .lesson-card:nth-child(1) {
+                border-color: #bfdbfe;
+                background: linear-gradient( 135deg, #ffffff, #eff6ff );
+            }
+
+
+            /* Vocabulary */
+
+            .english-topics .lesson-card:nth-child(2) {
+                border-color: #c4b5fd;
+                background: linear-gradient( 135deg, #ffffff, #f5f3ff );
+            }
+
+
+            /* Grammar */
+
+            .english-topics .lesson-card:nth-child(3) {
+                border-color: #fbcfe8;
+                background: linear-gradient( 135deg, #ffffff, #fdf2f8 );
+            }
+
+
+            /* =========================
+           ICON COLORS
+        ========================= */
+
+            .english-topics .lesson-card:nth-child(1)
+            .lesson-icon {
+                color: #2563eb;
+            }
+
+            .english-topics .lesson-card:nth-child(2)
+            .lesson-icon {
+                color: #7c3aed;
+            }
+
+            .english-topics .lesson-card:nth-child(3)
+            .lesson-icon {
+                color: #ec4899;
+            }
+
+
+        /* =========================
+           TEXT COLORS
+        ========================= */
+
+        .lesson-card h2 {
+            color: #3730a3;
+        }
+
+        .lesson-card p {
+            color: #64748b;
+        }
+
+
+        /* =========================
+           BUTTON COLORS
+        ========================= */
+
+        .lesson-card button {
+            background: linear-gradient( 90deg, #2563eb, #7c3aed );
+            color: white;
+            box-shadow: 0 5px 14px rgba(37,99,235,0.20);
+        }
+
+            .lesson-card button:hover {
+                background: linear-gradient( 90deg, #1e40af, #6d28d9 );
+            }
+
+
+        /* =========================
+           ENGLISH BACK BUTTONS
+        ========================= */
+
+        .english-back button {
+            background: linear-gradient( 90deg, #2563eb, #7c3aed );
+            color: white;
+            box-shadow: 0 5px 14px rgba(37,99,235,0.20);
+        }
+
+            .english-back button:hover {
+                background: linear-gradient( 90deg, #1e40af, #6d28d9 );
+            }
+
+
+        /* =========================
+           FOOTER COLORS
+        ========================= */
+
+        footer {
+            background: linear-gradient( 90deg, #1e3a8a, #4f46e5, #7c3aed );
+            color: white;
+        }
+
+            footer h3 {
+                color: white;
+            }
+
+            footer p {
+                color: white;
+            }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="#" onclick="logoutStudent()">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- English Learning Page -->
+    <main class="math-page">
+
+        <!-- Page Heading -->
+        <div class="math-header">
+
+            <p class="welcome">
+                ENGLISH
+            </p>
+
+            <h1>
+                📖 English Learning
+            </h1>
+
+            <p id="englishStandard">
+                Let's start learning!
+            </p>
+
+            <p class="english-description">
+                Reading and Grammar
+            </p>
+
+            <p>
+                Practice reading, vocabulary, sentences
+                and basic grammar.
+            </p>
+
+        </div>
+
+
+        <!-- English Topics -->
+        <section class="english-topics">
+
+
+            <!-- Reading -->
+            <div class="lesson-card">
+
+                <div class="lesson-icon">
+                    📖
+                </div>
+
+                <h2>
+                    Practice Reading
+                </h2>
+
+                <p>
+                    Read simple passages and improve
+                    your reading skills.
+                </p>
+
+                <button onclick="startEnglishLesson('reading')">
+                    Start Reading →
+                </button>
+
+            </div>
+
+
+            <!-- Vocabulary -->
+            <div class="lesson-card">
+
+                <div class="lesson-icon">
+                    📝
+                </div>
+
+                <h2>
+                    Vocabulary
+                </h2>
+
+                <p>
+                    Learn new words and their meanings.
+                </p>
+
+                <button onclick="startEnglishLesson('vocabulary')">
+                    Learn Vocabulary →
+                </button>
+
+            </div>
+
+
+            <!-- Grammar -->
+            <div class="lesson-card">
+
+                <div class="lesson-icon">
+                    ✏️
+                </div>
+
+                <h2>
+                    Sentences and Basic Grammar
+                </h2>
+
+                <p>
+                    Practice sentences and basic
+                    grammar rules.
+                </p>
+
+                <button onclick="startEnglishLesson('grammar')">
+                    Practice Grammar →
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- English Progress and Back Buttons -->
+        <div class="english-back">
+
+            <button onclick="window.location.href='english-progress.html'">
+                📊 View My Progress
+            </button>
+
+            <button onclick="window.location.href='subjects.html'">
+                ← Back to Subjects
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>
+            🎓 EduConnect
+        </h3>
+
+        <p>
+            Smart learning for young minds.
+        </p>
+
+        <p>
+            © 2026 EduConnect
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

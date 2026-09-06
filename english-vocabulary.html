@@ -1,0 +1,1001 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Vocabulary - EduConnect</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        /* =====================================
+           COLORFUL VOCABULARY PAGE
+        ===================================== */
+
+        body {
+            background: linear-gradient( 135deg, #eef2ff, #f0f9ff, #fdf4ff );
+        }
+
+
+        /* =====================================
+           NAVBAR
+        ===================================== */
+
+        .navbar {
+            background: linear-gradient( 90deg, #1e3a8a, #4f46e5, #7c3aed );
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25);
+        }
+
+            .navbar .logo {
+                color: white;
+                font-weight: bold;
+            }
+
+            .navbar nav a {
+                color: white;
+                font-weight: 600;
+                transition: 0.25s;
+            }
+
+                .navbar nav a:hover {
+                    background: rgba(255, 255, 255, 0.15);
+                    border-radius: 8px;
+                }
+
+
+        /* =====================================
+           MAIN PAGE
+        ===================================== */
+
+        .vocabulary-page {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        .vocabulary-header {
+            text-align: center;
+            margin-bottom: 35px;
+            background: linear-gradient( 135deg, #ffffff, #eef2ff );
+            padding: 30px 20px;
+            border-radius: 22px;
+            border: 2px solid #e0e7ff;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.13);
+        }
+
+            .vocabulary-header .welcome {
+                color: #2563eb;
+                font-weight: bold;
+                letter-spacing: 3px;
+                margin-bottom: 8px;
+            }
+
+            .vocabulary-header h1 {
+                margin: 10px 0;
+                color: #3730a3;
+                font-size: 34px;
+            }
+
+        .standard-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 9px 24px;
+            border-radius: 25px;
+            background: linear-gradient( 90deg, #2563eb, #7c3aed );
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.25);
+        }
+
+        #vocabularyDescription {
+            margin-top: 14px;
+            font-size: 17px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================
+           VOCABULARY CARDS
+        ===================================== */
+
+        .vocabulary-card {
+            background: white;
+            padding: 28px;
+            margin-bottom: 28px;
+            border-radius: 20px;
+            border: 2px solid #e0e7ff;
+            box-shadow: 0 8px 22px rgba(79, 70, 229, 0.10);
+            transition: 0.25s;
+        }
+
+            .vocabulary-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 28px rgba(79, 70, 229, 0.15);
+            }
+
+            .vocabulary-card h2 {
+                margin-top: 0;
+                margin-bottom: 20px;
+                color: #3730a3;
+                font-size: 24px;
+            }
+
+
+            /* =====================================
+           WORDS CARD
+        ===================================== */
+
+            .vocabulary-card:first-of-type {
+                background: linear-gradient( 135deg, #ffffff, #eff6ff );
+                border-color: #bfdbfe;
+            }
+
+                .vocabulary-card:first-of-type h2 {
+                    color: #2563eb;
+                }
+
+
+        /* =====================================
+           WORD LIST
+        ===================================== */
+
+        .word-item {
+            padding: 17px;
+            margin: 14px 0;
+            border-radius: 14px;
+            background: linear-gradient( 135deg, #ffffff, #eff6ff );
+            border-left: 6px solid #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+            transition: 0.2s;
+        }
+
+            .word-item:nth-child(2) {
+                background: linear-gradient( 135deg, #ffffff, #f5f3ff );
+                border-left-color: #7c3aed;
+            }
+
+            .word-item:nth-child(3) {
+                background: linear-gradient( 135deg, #ffffff, #f0fdf4 );
+                border-left-color: #22c55e;
+            }
+
+            .word-item:nth-child(4) {
+                background: linear-gradient( 135deg, #ffffff, #fdf2f8 );
+                border-left-color: #ec4899;
+            }
+
+            .word-item:hover {
+                transform: translateX(5px);
+            }
+
+        .word {
+            font-size: 21px;
+            font-weight: bold;
+            color: #3730a3;
+            margin-bottom: 5px;
+        }
+
+        .meaning {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================
+           QUESTION CARD
+        ===================================== */
+
+        .vocabulary-card:nth-of-type(2) {
+            background: linear-gradient( 135deg, #ffffff, #f5f3ff );
+            border-color: #c4b5fd;
+        }
+
+            .vocabulary-card:nth-of-type(2) h2 {
+                color: #7c3aed;
+            }
+
+
+        /* =====================================
+           QUESTION
+        ===================================== */
+
+        .question {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #334155;
+            line-height: 1.6;
+            padding: 16px;
+            background: #faf5ff;
+            border-radius: 12px;
+            border-left: 5px solid #7c3aed;
+        }
+
+
+        /* =====================================
+           ANSWER BUTTONS
+        ===================================== */
+
+        .answer-button {
+            display: block;
+            width: 100%;
+            padding: 16px 18px;
+            margin: 12px 0;
+            border: 2px solid #ddd6fe;
+            border-radius: 12px;
+            background: linear-gradient( 90deg, #eef2ff, #f5f3ff );
+            color: #334155;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+            .answer-button:hover {
+                background: linear-gradient( 90deg, #dbeafe, #ede9fe );
+                border-color: #818cf8;
+                transform: translateX(4px);
+                box-shadow: 0 5px 12px rgba(79, 70, 229, 0.12);
+            }
+
+            .answer-button:disabled {
+                cursor: default;
+            }
+
+            .answer-button.correct {
+                background: linear-gradient( 90deg, #dcfce7, #bbf7d0 );
+                border-color: #22c55e;
+                color: #166534;
+                box-shadow: 0 5px 15px rgba(34, 197, 94, 0.15);
+            }
+
+            .answer-button.wrong {
+                background: linear-gradient( 90deg, #fee2e2, #fecdd3 );
+                border-color: #ef4444;
+                color: #991b1b;
+                box-shadow: 0 5px 15px rgba(239, 68, 68, 0.12);
+            }
+
+
+        /* =====================================
+           RESULT
+        ===================================== */
+
+        #vocabularyResult {
+            margin-top: 22px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #3730a3;
+            padding: 14px;
+            border-radius: 12px;
+            background: #eef2ff;
+        }
+
+        #vocabularyScore {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 12px;
+            color: #2563eb;
+            padding: 12px;
+        }
+
+
+        /* =====================================
+           BACK BUTTON
+        ===================================== */
+
+        .back-area {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+            .back-area button {
+                padding: 14px 28px;
+                border: none;
+                border-radius: 12px;
+                background: linear-gradient( 90deg, #2563eb, #7c3aed );
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0 6px 15px rgba(79, 70, 229, 0.22);
+                transition: 0.25s;
+            }
+
+                .back-area button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 9px 20px rgba(79, 70, 229, 0.30);
+                }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .vocabulary-page {
+                padding: 25px 15px;
+            }
+
+            .vocabulary-header {
+                padding: 25px 15px;
+            }
+
+                .vocabulary-header h1 {
+                    font-size: 27px;
+                }
+
+            .vocabulary-card {
+                padding: 20px;
+            }
+
+                .vocabulary-card h2 {
+                    font-size: 21px;
+                }
+
+            .word {
+                font-size: 19px;
+            }
+
+            .meaning {
+                font-size: 15px;
+            }
+
+            .question {
+                font-size: 17px;
+            }
+
+            .answer-button {
+                padding: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🎓 EduConnect
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="english.html">
+                English
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN VOCABULARY PAGE
+    ========================================= -->
+
+    <main class="vocabulary-page">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <div class="vocabulary-header">
+
+            <p class="welcome">
+                ENGLISH
+            </p>
+
+            <h1>
+                📝 Vocabulary
+            </h1>
+
+            <div class="standard-badge">
+
+                Standard
+                <span id="standardNumber">
+                    1
+                </span>
+
+            </div>
+
+            <p id="vocabularyDescription">
+                Vocabulary practice for your standard.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================
+             WORDS CARD
+        ===================================== -->
+
+        <section class="vocabulary-card">
+
+            <h2>
+                📚 Learn New Words
+            </h2>
+
+            <div id="wordList">
+
+                Loading vocabulary...
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             QUESTION CARD
+        ===================================== -->
+
+        <section class="vocabulary-card">
+
+            <h2>
+                🧠 Vocabulary Question
+            </h2>
+
+            <p id="vocabularyQuestion"
+               class="question">
+
+                Loading question...
+
+            </p>
+
+            <div id="answerContainer"></div>
+
+            <p id="vocabularyResult"></p>
+
+            <p id="vocabularyScore"></p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             BACK BUTTON
+        ===================================== -->
+
+        <div class="back-area">
+
+            <button onclick="window.location.href='english.html'">
+
+                ← Back to English
+
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /* =========================================
+           GET STUDENT STANDARD
+        ========================================= */
+
+        let standard =
+            parseInt(
+                localStorage.getItem("studentStandard")
+            ) || 1;
+
+
+        /* Make sure standard is 1–5 */
+
+        if (
+            standard < 1 ||
+            standard > 5
+        ) {
+
+            standard = 1;
+
+        }
+
+
+        /* Display standard */
+
+        document.getElementById(
+            "standardNumber"
+        ).textContent = standard;
+
+
+
+        /* =========================================
+           STANDARD-SPECIFIC VOCABULARY
+        ========================================= */
+
+        const vocabularyContent = {
+
+            1: {
+
+                description:
+                    "Standard 1 Vocabulary - Learn simple everyday words and their meanings.",
+
+                words: [
+                    {
+                        word: "Happy",
+                        meaning: "Feeling good and cheerful."
+                    },
+                    {
+                        word: "Big",
+                        meaning: "Large in size."
+                    },
+                    {
+                        word: "Fast",
+                        meaning: "Moving quickly."
+                    },
+                    {
+                        word: "Clean",
+                        meaning: "Free from dirt."
+                    }
+                ],
+
+                question:
+                    "What does the word 'Happy' mean?",
+
+                options: [
+                    "Feeling good and cheerful",
+                    "Feeling very tired",
+                    "Being angry",
+                    "Being afraid"
+                ],
+
+                answer:
+                    "Feeling good and cheerful"
+
+            },
+
+
+            2: {
+
+                description:
+                    "Standard 2 Vocabulary - Learn common words and understand their meanings.",
+
+                words: [
+                    {
+                        word: "Brave",
+                        meaning: "Not afraid to face something difficult."
+                    },
+                    {
+                        word: "Tiny",
+                        meaning: "Very small."
+                    },
+                    {
+                        word: "Begin",
+                        meaning: "To start something."
+                    },
+                    {
+                        word: "Quiet",
+                        meaning: "Making very little noise."
+                    }
+                ],
+
+                question:
+                    "What does the word 'Tiny' mean?",
+
+                options: [
+                    "Very small",
+                    "Very loud",
+                    "Very old",
+                    "Very heavy"
+                ],
+
+                answer:
+                    "Very small"
+
+            },
+
+
+            3: {
+
+                description:
+                    "Standard 3 Vocabulary - Learn useful words, meanings and word relationships.",
+
+                words: [
+                    {
+                        word: "Ancient",
+                        meaning: "Very old; from a long time ago."
+                    },
+                    {
+                        word: "Protect",
+                        meaning: "To keep someone or something safe."
+                    },
+                    {
+                        word: "Curious",
+                        meaning: "Wanting to know or learn something."
+                    },
+                    {
+                        word: "Generous",
+                        meaning: "Willing to give or share with others."
+                    }
+                ],
+
+                question:
+                    "What does the word 'Protect' mean?",
+
+                options: [
+                    "To keep something safe",
+                    "To break something",
+                    "To forget something",
+                    "To hide from learning"
+                ],
+
+                answer:
+                    "To keep something safe"
+
+            },
+
+
+            4: {
+
+                description:
+                    "Standard 4 Vocabulary - Build stronger vocabulary and understand words in context.",
+
+                words: [
+                    {
+                        word: "Observe",
+                        meaning: "To watch something carefully."
+                    },
+                    {
+                        word: "Essential",
+                        meaning: "Very important or necessary."
+                    },
+                    {
+                        word: "Fragile",
+                        meaning: "Easily broken or damaged."
+                    },
+                    {
+                        word: "Enormous",
+                        meaning: "Extremely large."
+                    }
+                ],
+
+                question:
+                    "What does the word 'Essential' mean?",
+
+                options: [
+                    "Very important or necessary",
+                    "Extremely small",
+                    "Easy to break",
+                    "Difficult to see"
+                ],
+
+                answer:
+                    "Very important or necessary"
+
+            },
+
+
+            5: {
+
+                description:
+                    "Standard 5 Vocabulary - Develop advanced vocabulary and understand precise word meanings.",
+
+                words: [
+                    {
+                        word: "Adapt",
+                        meaning: "To change or adjust to new conditions."
+                    },
+                    {
+                        word: "Reliable",
+                        meaning: "Able to be trusted or depended on."
+                    },
+                    {
+                        word: "Efficient",
+                        meaning: "Working well without wasting time or resources."
+                    },
+                    {
+                        word: "Consequence",
+                        meaning: "A result that follows an action or event."
+                    }
+                ],
+
+                question:
+                    "What does the word 'Consequence' mean?",
+
+                options: [
+                    "A result that follows an action or event",
+                    "A plan made before an event",
+                    "A person who teaches a subject",
+                    "A place where people meet"
+                ],
+
+                answer:
+                    "A result that follows an action or event"
+
+            }
+
+        };
+
+
+
+        /* =========================================
+           GET CURRENT CONTENT
+        ========================================= */
+
+        const currentVocabulary =
+            vocabularyContent[standard] ||
+            vocabularyContent[1];
+
+
+
+        /* =========================================
+           DISPLAY DESCRIPTION
+        ========================================= */
+
+        document.getElementById(
+            "vocabularyDescription"
+        ).textContent =
+            currentVocabulary.description;
+
+
+
+        /* =========================================
+           DISPLAY WORDS
+        ========================================= */
+
+        const wordList =
+            document.getElementById(
+                "wordList"
+            );
+
+
+        currentVocabulary.words.forEach(
+            function (item) {
+
+                const wordItem =
+                    document.createElement(
+                        "div"
+                    );
+
+                wordItem.className =
+                    "word-item";
+
+                wordItem.innerHTML =
+
+                    '<div class="word">' +
+                    item.word +
+                    '</div>' +
+
+                    '<div class="meaning">' +
+                    item.meaning +
+                    '</div>';
+
+
+                wordList.appendChild(
+                    wordItem
+                );
+
+            }
+        );
+
+
+
+        /* =========================================
+           DISPLAY QUESTION
+        ========================================= */
+
+        document.getElementById(
+            "vocabularyQuestion"
+        ).textContent =
+            currentVocabulary.question;
+
+
+
+        /* =========================================
+           CREATE ANSWER BUTTONS
+        ========================================= */
+
+        const answerContainer =
+            document.getElementById(
+                "answerContainer"
+            );
+
+
+        let answered = false;
+
+        let score = 0;
+
+
+        currentVocabulary.options.forEach(
+            function (option) {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.type = "button";
+
+                button.className =
+                    "answer-button";
+
+                button.textContent =
+                    option;
+
+
+                button.onclick =
+                    function () {
+
+                        if (answered) {
+
+                            return;
+
+                        }
+
+
+                        answered = true;
+
+
+                        /* Check answer */
+
+                        if (
+                            option ===
+                            currentVocabulary.answer
+                        ) {
+
+                            score = 1;
+
+                            button.classList.add(
+                                "correct"
+                            );
+
+
+                            document.getElementById(
+                                "vocabularyResult"
+                            ).textContent =
+                                "✅ Correct! Great job!";
+
+                        }
+
+                        else {
+
+                            score = 0;
+
+                            button.classList.add(
+                                "wrong"
+                            );
+
+
+                            /* Show correct answer */
+
+                            const allButtons =
+                                answerContainer.querySelectorAll(
+                                    ".answer-button"
+                                );
+
+
+                            allButtons.forEach(
+                                function (btn) {
+
+                                    if (
+                                        btn.textContent ===
+                                        currentVocabulary.answer
+                                    ) {
+
+                                        btn.classList.add(
+                                            "correct"
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+
+                            document.getElementById(
+                                "vocabularyResult"
+                            ).textContent =
+                                "❌ Not quite. The correct answer is shown in green.";
+
+                        }
+
+
+                        /* Disable all buttons */
+
+                        const allButtons =
+                            answerContainer.querySelectorAll(
+                                ".answer-button"
+                            );
+
+
+                        allButtons.forEach(
+                            function (btn) {
+
+                                btn.disabled = true;
+
+                            }
+                        );
+
+
+                        /* Save score */
+
+                        localStorage.setItem(
+                            "englishVocabularyScore",
+                            score
+                        );
+
+
+                        localStorage.setItem(
+                            "vocabularyScore",
+                            score
+                        );
+
+
+                        /* Display score */
+
+                        document.getElementById(
+                            "vocabularyScore"
+                        ).textContent =
+                            "Vocabulary Score: " +
+                            score +
+                            "/1";
+
+                    };
+
+
+                answerContainer.appendChild(
+                    button
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
