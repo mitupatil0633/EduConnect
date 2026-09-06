@@ -1,289 +1,268 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Login - EduConnect</title>
 
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-             /* ================================
-        LOGIN PAGE - COLORFUL DESIGN
-        ================================ */
 
-             .login-page {
-                 margin: 0;
-                 min-height: 100vh;
-                 background: linear-gradient(135deg, #eef2ff, #fce7f3, #e0f2fe);
-                 font-family: Arial, sans-serif;
-             }
+        .login-page {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #fce7f3, #e0f2fe);
+            font-family: Arial, sans-serif;
+        }
 
-                 /* Navbar */
-                 .login-page .navbar {
-                     width: 100%;
-                     min-height: 70px;
-                     padding: 0 30px;
-                     box-sizing: border-box;
-                     display: flex;
-                     align-items: center;
-                     justify-content: space-between;
-                     background: linear-gradient(90deg, #6d28d9, #9333ea, #ec4899);
-                     color: white;
-                 }
+            .login-page .navbar {
+                width: 100%;
+                min-height: 70px;
+                padding: 0 30px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: linear-gradient(90deg, #6d28d9, #9333ea, #ec4899);
+                color: white;
+            }
 
-                     .login-page .navbar .logo {
-                         font-size: 24px;
-                         font-weight: bold;
-                         color: white;
-                     }
+                .login-page .navbar .logo {
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: white;
+                }
 
-                     .login-page .navbar nav {
-                         display: flex;
-                         gap: 25px;
-                     }
+                .login-page .navbar nav {
+                    display: flex;
+                    gap: 25px;
+                }
 
-                         .login-page .navbar nav a {
-                             color: white;
-                             text-decoration: none;
-                             font-weight: bold;
-                         }
+                    .login-page .navbar nav a {
+                        color: white;
+                        text-decoration: none;
+                        font-weight: bold;
+                    }
 
-                             .login-page .navbar nav a:hover {
-                                 text-decoration: underline;
-                             }
+                        .login-page .navbar nav a:hover {
+                            text-decoration: underline;
+                        }
 
-                 /* Main area */
-                 .login-page .login-container {
-                     min-height: calc(100vh - 190px);
-                     width: 100%;
-                     padding: 55px 20px;
-                     box-sizing: border-box;
-                     display: flex;
-                     justify-content: center;
-                     align-items: flex-start;
-                 }
+            .login-page .login-container {
+                min-height: calc(100vh - 190px);
+                width: 100%;
+                padding: 55px 20px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+            }
 
-                 /* Login box */
-                 .login-page .login-box {
-                     width: 100%;
-                     max-width: 450px;
-                     background: white;
-                     padding: 40px;
-                     box-sizing: border-box;
-                     border-radius: 25px;
-                     box-shadow: 0 20px 50px rgba(79, 70, 229, 0.20);
-                     border-top: 7px solid #8b5cf6;
-                 }
+            .login-page .login-box {
+                width: 100%;
+                max-width: 450px;
+                background: white;
+                padding: 40px;
+                box-sizing: border-box;
+                border-radius: 25px;
+                box-shadow: 0 20px 50px rgba(79, 70, 229, 0.20);
+                border-top: 7px solid #8b5cf6;
+            }
 
-                     /* ================================
-        LOGO - FIXED POSITION
-        ================================ */
+                .login-page .login-box .login-logo {
+                    position: static !important;
+                    width: 90px;
+                    height: 90px;
+                    margin: 0 auto 25px auto !important;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
+                    font-size: 48px;
+                    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.20);
+                    z-index: 1;
+                }
 
-                     .login-page .login-box .login-logo {
-                         position: static !important;
-                         width: 90px;
-                         height: 90px;
-                         margin: 0 auto 25px auto !important;
-                         display: flex;
-                         align-items: center;
-                         justify-content: center;
-                         border-radius: 50%;
-                         background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
-                         font-size: 48px;
-                         box-shadow: 0 10px 25px rgba(139, 92, 246, 0.20);
-                         z-index: 1;
-                     }
+                .login-page .login-box h1 {
+                    position: static !important;
+                    margin: 0 0 10px 0 !important;
+                    text-align: center;
+                    color: #4c1d95;
+                    font-size: 32px;
+                }
 
-                     /* Title */
-                     .login-page .login-box h1 {
-                         position: static !important;
-                         margin: 0 0 10px 0 !important;
-                         text-align: center;
-                         color: #4c1d95;
-                         font-size: 32px;
-                     }
+                .login-page .login-box .login-subtitle {
+                    position: static !important;
+                    margin: 0 0 35px 0 !important;
+                    text-align: center;
+                    color: #64748b;
+                    line-height: 1.5;
+                }
 
-                     /* Subtitle */
-                     .login-page .login-box .login-subtitle {
-                         position: static !important;
-                         margin: 0 0 35px 0 !important;
-                         text-align: center;
-                         color: #64748b;
-                         line-height: 1.5;
-                     }
+                .login-page .login-box form {
+                    position: static !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
 
-                     /* Form */
-                     .login-page .login-box form {
-                         position: static !important;
-                         margin: 0 !important;
-                         padding: 0 !important;
-                     }
+                .login-page .login-box .input-group {
+                    position: static !important;
+                    margin-bottom: 22px !important;
+                }
 
-                     /* Input groups */
-                     .login-page .login-box .input-group {
-                         position: static !important;
-                         margin-bottom: 22px !important;
-                     }
+                    .login-page .login-box .input-group label {
+                        display: block;
+                        margin-bottom: 8px;
+                        color: #374151;
+                        font-weight: bold;
+                    }
 
-                         /* Labels */
-                         .login-page .login-box .input-group label {
-                             display: block;
-                             margin-bottom: 8px;
-                             color: #374151;
-                             font-weight: bold;
-                         }
+                .login-page .login-box .input-wrapper {
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                }
 
-                     /* Input wrapper */
-                     .login-page .login-box .input-wrapper {
-                         position: relative;
-                         width: 100%;
-                         display: flex;
-                         align-items: center;
-                     }
+                .login-page .login-box .input-icon {
+                    position: absolute;
+                    left: 15px;
+                    font-size: 20px;
+                    z-index: 2;
+                }
 
-                     /* Icons */
-                     .login-page .login-box .input-icon {
-                         position: absolute;
-                         left: 15px;
-                         font-size: 20px;
-                         z-index: 2;
-                     }
+                .login-page .login-box input[type="text"],
+                .login-page .login-box input[type="password"],
+                .login-page .login-box select {
+                    width: 100%;
+                    height: 52px;
+                    padding: 0 15px 0 48px;
+                    box-sizing: border-box;
+                    border: 2px solid #ddd6fe;
+                    border-radius: 12px;
+                    background: #fafafa;
+                    color: #334155;
+                    font-size: 16px;
+                    outline: none;
+                    transition: 0.3s;
+                }
 
-                     /* Inputs and select */
-                     .login-page .login-box input[type="text"],
-                     .login-page .login-box input[type="password"],
-                     .login-page .login-box select {
-                         width: 100%;
-                         height: 52px;
-                         padding: 0 15px 0 48px;
-                         box-sizing: border-box;
-                         border: 2px solid #ddd6fe;
-                         border-radius: 12px;
-                         background: #fafafa;
-                         color: #334155;
-                         font-size: 16px;
-                         outline: none;
-                         transition: 0.3s;
-                     }
+                    .login-page .login-box input[type="text"]:focus,
+                    .login-page .login-box input[type="password"]:focus,
+                    .login-page .login-box select:focus {
+                        border-color: #8b5cf6;
+                        background: white;
+                        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+                    }
 
-                         /* Focus */
-                         .login-page .login-box input[type="text"]:focus,
-                         .login-page .login-box input[type="password"]:focus,
-                         .login-page .login-box select:focus {
-                             border-color: #8b5cf6;
-                             background: white;
-                             box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
-                         }
+                .login-page .login-box .login-button {
+                    width: 100%;
+                    height: 55px;
+                    margin-top: 8px;
+                    border: none;
+                    border-radius: 14px;
+                    background: linear-gradient(90deg, #7c3aed, #ec4899);
+                    color: white;
+                    font-size: 17px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.25);
+                    transition: 0.3s;
+                }
 
-                     /* Login button */
-                     .login-page .login-box .login-button {
-                         width: 100%;
-                         height: 55px;
-                         margin-top: 8px;
-                         border: none;
-                         border-radius: 14px;
-                         background: linear-gradient(90deg, #7c3aed, #ec4899);
-                         color: white;
-                         font-size: 17px;
-                         font-weight: bold;
-                         cursor: pointer;
-                         box-shadow: 0 10px 20px rgba(124, 58, 237, 0.25);
-                         transition: 0.3s;
-                     }
+                    .login-page .login-box .login-button:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 14px 25px rgba(124, 58, 237, 0.30);
+                    }
 
-                         .login-page .login-box .login-button:hover {
-                             transform: translateY(-2px);
-                             box-shadow: 0 14px 25px rgba(124, 58, 237, 0.30);
-                         }
+                .login-page .login-box .login-options {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 20px;
+                    font-size: 14px;
+                }
 
-                     /* Remember / Forgot */
-                     .login-page .login-box .login-options {
-                         display: flex;
-                         justify-content: space-between;
-                         align-items: center;
-                         margin-top: 20px;
-                         font-size: 14px;
-                     }
+                    .login-page .login-box .login-options label {
+                        color: #64748b;
+                    }
 
-                         .login-page .login-box .login-options label {
-                             color: #64748b;
-                         }
+                    .login-page .login-box .login-options a {
+                        color: #7c3aed;
+                        text-decoration: none;
+                        font-weight: bold;
+                    }
 
-                         .login-page .login-box .login-options a {
-                             color: #7c3aed;
-                             text-decoration: none;
-                             font-weight: bold;
-                         }
+                        .login-page .login-box .login-options a:hover {
+                            text-decoration: underline;
+                        }
 
-                             .login-page .login-box .login-options a:hover {
-                                 text-decoration: underline;
-                             }
+                .login-page .login-box #loginMessage {
+                    margin-top: 18px;
+                    text-align: center;
+                    font-weight: bold;
+                }
 
-                     /* Message */
-                     .login-page .login-box #loginMessage {
-                         margin-top: 18px;
-                         text-align: center;
-                         font-weight: bold;
-                     }
+            .login-page footer {
+                width: 100%;
+                padding: 25px 20px;
+                box-sizing: border-box;
+                text-align: center;
+                background: linear-gradient(90deg, #4c1d95, #7c3aed);
+                color: white;
+            }
 
-                 /* Footer */
-                 .login-page footer {
-                     width: 100%;
-                     padding: 25px 20px;
-                     box-sizing: border-box;
-                     text-align: center;
-                     background: linear-gradient(90deg, #4c1d95, #7c3aed);
-                     color: white;
-                 }
+                .login-page footer h3 {
+                    margin: 0 0 8px;
+                }
 
-                     .login-page footer h3 {
-                         margin: 0 0 8px;
-                     }
+                .login-page footer p {
+                    margin: 5px 0;
+                }
 
-                     .login-page footer p {
-                         margin: 5px 0;
-                     }
+        @media (max-width: 600px) {
 
-             /* Mobile */
-             @media (max-width: 600px) {
+            .login-page .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 12px;
+            }
 
-                 .login-page .navbar {
-                     padding: 15px 20px;
-                     flex-direction: column;
-                     gap: 12px;
-                 }
+                .login-page .navbar nav {
+                    gap: 15px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
 
-                     .login-page .navbar nav {
-                         gap: 15px;
-                         flex-wrap: wrap;
-                         justify-content: center;
-                     }
+            .login-page .login-container {
+                padding: 30px 15px;
+            }
 
-                 .login-page .login-container {
-                     padding: 30px 15px;
-                 }
+            .login-page .login-box {
+                padding: 30px 20px;
+            }
 
-                 .login-page .login-box {
-                     padding: 30px 20px;
-                 }
+                .login-page .login-box .login-logo {
+                    width: 80px;
+                    height: 80px;
+                    font-size: 42px;
+                    margin-bottom: 22px !important;
+                }
 
-                     .login-page .login-box .login-logo {
-                         width: 80px;
-                         height: 80px;
-                         font-size: 42px;
-                         margin-bottom: 22px !important;
-                     }
+                .login-page .login-box h1 {
+                    font-size: 27px;
+                }
 
-                     .login-page .login-box h1 {
-                         font-size: 27px;
-                     }
-
-                     .login-page .login-box .login-subtitle {
-                         margin-bottom: 30px !important;
-                     }
-             }
+                .login-page .login-box .login-subtitle {
+                    margin-bottom: 30px !important;
+                }
+        }
     </style>
+
 </head>
 
 <body class="login-page">
@@ -305,7 +284,6 @@
 
         <div class="login-box">
 
-            <!-- LOGO IS NOW COMPLETELY SEPARATE FROM THE FORM -->
             <div class="login-logo">🎓</div>
 
             <h1>Student Login</h1>
@@ -329,7 +307,9 @@
 
                         <input type="text"
                                id="studentName"
+                               name="studentName"
                                placeholder="Enter your name"
+                               autocomplete="name"
                                required>
 
                     </div>
@@ -347,7 +327,9 @@
 
                         <span class="input-icon">📚</span>
 
-                        <select id="studentClass" required>
+                        <select id="studentClass"
+                                name="studentClass"
+                                required>
 
                             <option value="">
                                 Choose your standard
@@ -392,7 +374,9 @@
 
                         <input type="password"
                                id="password"
+                               name="password"
                                placeholder="Enter password"
+                               autocomplete="current-password"
                                required>
 
                     </div>
@@ -401,7 +385,8 @@
 
 
                 <button type="submit"
-                        class="login-button">
+                        class="login-button"
+                        onclick="loginStudent()">
                     🚀 Login & Start Learning
                 </button>
 
@@ -439,7 +424,10 @@
 
     </footer>
 
-    <script src="js/script.js"></script>
+
+    <!-- Load newest JavaScript file -->
+    <script src="js/script.js?v=2"></script>
 
 </body>
+
 </html>
