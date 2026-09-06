@@ -13,167 +13,93 @@ function startLearning() {
 
 }
 
-
 // =====================================================
 // STUDENT LOGIN
 // =====================================================
 
-const loginForm =
-    document.getElementById("loginForm");
-
+const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
+    loginForm.addEventListener("submit", function (event) {
 
-            event.preventDefault();
+        event.preventDefault();
 
+        const nameElement =
+            document.getElementById("studentName");
 
-            const nameElement =
-                document.getElementById(
-                    "studentName"
-                );
+        const standardElement =
+            document.getElementById("studentClass");
 
+        const passwordElement =
+            document.getElementById("password");
 
-            const standardElement =
-                document.getElementById(
-                    "studentClass"
-                );
+        const name =
+            nameElement
+                ? nameElement.value.trim()
+                : "";
 
+        const standard =
+            standardElement
+                ? standardElement.value
+                : "";
 
-            const passwordElement =
-                document.getElementById(
-                    "password"
-                );
+        const password =
+            passwordElement
+                ? passwordElement.value
+                : "";
 
-
-            const name =
-                nameElement
-                    ? nameElement.value.trim()
-                    : "";
-
-
-            const standard =
-                standardElement
-                    ? standardElement.value
-                    : "";
-
-
-            const password =
-                passwordElement
-                    ? passwordElement.value
-                    : "";
-
-
-            if (name === "") {
-
-                alert(
-                    "Please enter your name."
-                );
-
-                return;
-
-            }
-
-
-            if (standard === "") {
-
-                alert(
-                    "Please select your standard."
-                );
-
-                return;
-
-            }
-
-
-            if (password === "") {
-
-                alert(
-                    "Please enter your password."
-                );
-
-                return;
-
-            }
-
-
-            // Save student information
-
-            localStorage.setItem(
-                "studentName",
-                name
-            );
-
-
-            localStorage.setItem(
-                "studentStandard",
-                standard
-            );
-
-
-            // Create score values
-
-            const scoreKeys = [
-
-                "mathScore",
-
-                "scienceScore",
-
-                "readingScore",
-
-                "vocabularyScore",
-
-                "grammarScore",
-
-                "computerPartsScore",
-
-                "keyboardScore",
-
-                "internetScore",
-
-                "safetyScore",
-
-                "gkScore",
-
-                "funScore",
-
-                "funChallenges"
-
-            ];
-
-
-            scoreKeys.forEach(
-                function (key) {
-
-                    if (
-                        localStorage.getItem(key)
-                        === null
-                    ) {
-
-                        localStorage.setItem(
-                            key,
-                            "0"
-                        );
-
-                    }
-
-                }
-            );
-
-
-            // Go to dashboard
-
-            window.location.href =
-                "student-dashboard.html";
-
+        if (name === "") {
+            alert("Please enter your name.");
+            return;
         }
-    );
+
+        if (standard === "") {
+            alert("Please select your standard.");
+            return;
+        }
+
+        if (password === "") {
+            alert("Please enter your password.");
+            return;
+        }
+
+        // Save student information
+        localStorage.setItem("studentName", name);
+        localStorage.setItem("studentStandard", standard);
+
+        // Create score values
+        const scoreKeys = [
+            "mathScore",
+            "scienceScore",
+            "readingScore",
+            "vocabularyScore",
+            "grammarScore",
+            "computerPartsScore",
+            "keyboardScore",
+            "internetScore",
+            "safetyScore",
+            "gkScore",
+            "funScore",
+            "funChallenges"
+        ];
+
+        scoreKeys.forEach(function (key) {
+
+            if (localStorage.getItem(key) === null) {
+
+                localStorage.setItem(key, "0");
+
+            }
+
+        });
+
+        // Go to dashboard
+        window.location.href = "./student-dashboard.html";
+
+    });
 
 }
-
 
 // =====================================================
 // STUDENT INFORMATION
